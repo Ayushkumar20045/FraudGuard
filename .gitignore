@@ -1,0 +1,27 @@
+# Dataset
+data/raw/
+data/processed/
+
+# Trained models
+models/
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Environment
+.env
+.venv/
+venv/
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Jupyter / Anaconda
+.virtual_documents/
+anaconda_projects/
