@@ -15,3 +15,11 @@
 - Explored numerical identity features and identified promising candidates.
 - Explored categorical identity features and identified important fraud-rate differences.
 - Completed EDA and prepared findings for feature engineering.
+
+## Day 3 — Feature Engineering & Baseline Modeling
+- Built the master dataset and engineered time, identity-availability, and missingness features.
+- Created a leakage-safe chronological split with 484,847 training and 105,693 validation transactions.
+- Built numerical median imputation and categorical rare-category grouping with one-hot encoding.
+- Produced a final sparse feature matrix with 891 features.
+- Trained a Logistic Regression baseline achieving ROC-AUC 0.8054 and PR-AUC 0.1622.
+- At threshold 0.80, the model caught 1,309 frauds with 23.39% precision and 36.25% recall.
