@@ -22,4 +22,4 @@
 - Built numerical median imputation and categorical rare-category grouping with one-hot encoding.
 - Produced a final sparse feature matrix with 891 features.
 - Trained a Logistic Regression baseline achieving ROC-AUC 0.8054 and PR-AUC 0.1622.
-- At threshold 0.80, the model caught 1,309 frauds with 23.39% precision and 36.25% recall.
+- A threshold 0.80, the model caught 1,309 frauds with 23.39% precision and 36.25% recall.
