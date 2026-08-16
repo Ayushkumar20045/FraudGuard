@@ -22,4 +22,13 @@
 - Built numerical median imputation and categorical rare-category grouping with one-hot encoding.
 - Produced a final sparse feature matrix with 891 features.
 - Trained a Logistic Regression baseline achieving ROC-AUC 0.8054 and PR-AUC 0.1622.
-- A threshold 0.80, the model caught 1,309 frauds with 23.39% precision and 36.25% recall.
+- At threshold 0.80, the model caught 1,309 frauds with 23.39% precision and 36.25% recall.
+
+## Day 4 — Model Improvement
+
+- Recreated and saved the leakage-safe 891-feature training/validation matrices.
+- Trained XGBoost as the first nonlinear challenger to the Logistic Regression baseline.
+- XGBoost improved ROC-AUC from 0.8054 to 0.9049 and PR-AUC from 0.1622 to 0.5391.
+- Threshold 0.30 gave the best tested F1 of 0.5200 with 62.82% precision and 44.36% recall.
+- XGBoost caught 1,602 frauds with 948 false positives on validation data.
+- Feature analysis revealed strong nonlinear signals, especially V258, and PR-AUC remained stable across time periods.
