@@ -32,3 +32,12 @@
 - Threshold 0.30 gave the best tested F1 of 0.5200 with 62.82% precision and 44.36% recall.
 - XGBoost caught 1,602 frauds with 948 false positives on validation data.
 - Feature analysis revealed strong nonlinear signals, especially V258, and PR-AUC remained stable across time periods.
+
+## Day 5 — Model Explainability & Error Analysis
+
+- Analyzed XGBoost validation errors: 1,602 true positives, 948 false positives, 2,009 false negatives, and 101,134 true negatives.
+- Found that 899 of 2,009 missed frauds received probability below 0.05, showing that most false negatives are difficult cases rather than simple threshold misses.
+- Threshold analysis confirmed 0.30 as the best tested F1 point (0.5200), while lower thresholds provide higher recall at the cost of precision.
+- Investigated borderline false negatives and found that only 108 missed frauds had probabilities between 0.25–0.30.
+- V258 strongly separates detected fraud from borderline misses: true-positive probability increased from 0.70 to 0.86 across V258 ranges, while borderline fraud remained around 0.27.
+- Concluded that future improvement should focus on feature interactions and hard-to-detect fraud patterns rather than threshold tuning alone.
