@@ -41,3 +41,13 @@
 - Investigated borderline false negatives and found that only 108 missed frauds had probabilities between 0.25–0.30.
 - V258 strongly separates detected fraud from borderline misses: true-positive probability increased from 0.70 to 0.86 across V258 ranges, while borderline fraud remained around 0.27.
 - Concluded that future improvement should focus on feature interactions and hard-to-detect fraud patterns rather than threshold tuning alone.
+
+## Day 6 — Hard-Fraud Feature Engineering
+
+- Tested five targeted features based on Day 5 findings: V258 risk bands, V258 missingness, V294 risk band, and V294 missingness.
+- Rebuilt the preprocessing pipeline with 896 features while preserving the original 891-feature representation.
+- Trained an XGBoost challenger using the same hyperparameters as the Day 4 champion.
+- Day 6 performance decreased from ROC-AUC 0.9049 to 0.9038 and PR-AUC 0.5391 to 0.5331.
+- At threshold 0.30, the model caught 1,568 frauds versus 1,602 for the Day 4 model and produced 2,043 false negatives.
+- Rejected the engineered features because they added redundant information already captured by XGBoost.
+- Day 4 XGBoost remains the FraudGuard champion.
