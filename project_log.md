@@ -51,3 +51,12 @@
 - At threshold 0.30, the model caught 1,568 frauds versus 1,602 for the Day 4 model and produced 2,043 false negatives.
 - Rejected the engineered features because they added redundant information already captured by XGBoost.
 - Day 4 XGBoost remains the FraudGuard champion.
+
+## Day 7 — XGBoost Hyperparameter Optimization
+
+- Performed systematic XGBoost tuning across estimators, learning rate, depth, min child weight, subsampling, and column sampling.
+- Improved PR-AUC from 0.5391 to **0.6031** and ROC-AUC to **0.9219**.
+- Selected Experiment 11 as the champion: 1,500 estimators, max_depth=8, learning_rate=0.07, subsample=0.8, colsample_bytree=0.9.
+- Tested additional regularization settings (`gamma=0.05` and `0.1`), but both performed worse and were rejected.
+- Selected threshold **0.20**, achieving 71.87% precision, 49.24% recall, and 0.5844 F1-score.
+- Saved the final XGBoost model and validation predictions as the Day 7 champion.
