@@ -60,3 +60,14 @@
 - Tested additional regularization settings (`gamma=0.05` and `0.1`), but both performed worse and were rejected.
 - Selected threshold **0.20**, achieving 71.87% precision, 49.24% recall, and 0.5844 F1-score.
 - Saved the final XGBoost model and validation predictions as the Day 7 champion.
+
+## Day 8 — Hard-Fraud Feature Experiments
+
+- Investigated hard false negatives using V258, M4/M5, distance features, and missingness patterns.
+- Tested three targeted features against the Day 7 891-feature champion.
+- Experiment 1: `v258_m4_m5_interaction` → PR-AUC 0.5982 — rejected.
+- Experiment 2: `dist1_missing` → PR-AUC 0.6004 — rejected.
+- Experiment 3: `dist_missing_count` → PR-AUC 0.5998 — rejected.
+- Day 7 XGBoost remains the champion with ROC-AUC 0.9219 and PR-AUC 0.6031.
+- Concluded that these engineered hard-fraud signals are largely captured by the existing model.
+- Day 8 completed without replacing the champion.
