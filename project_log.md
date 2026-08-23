@@ -71,3 +71,13 @@
 - Day 7 XGBoost remains the champion with ROC-AUC 0.9219 and PR-AUC 0.6031.
 - Concluded that these engineered hard-fraud signals are largely captured by the existing model.
 - Day 8 completed without replacing the champion.
+
+## Day 9 — FastAPI & Frontend Foundation
+
+- Built the production inference pipeline using the Day 7 champion and saved preprocessing artifacts.
+- Verified the complete 891-feature inference pipeline.
+- Tested both legitimate and fraudulent transactions successfully.
+- Integrated the XGBoost model with the FastAPI `/predict` endpoint.
+- Verified API responses with LOW and HIGH risk transactions.
+- Started the Next.js frontend with a custom transaction-investigation focused UI.
+- Established the initial FraudGuard visual direction, intentionally avoiding a generic AI dashboard or TypeMetric-style design.

@@ -1,0 +1,892 @@
+feature
+TransactionDT
+TransactionAmt
+card1
+card2
+card3
+card5
+addr1
+addr2
+dist1
+dist2
+C1
+C2
+C3
+C4
+C5
+C6
+C7
+C8
+C9
+C10
+C11
+C12
+C13
+C14
+D1
+D2
+D3
+D4
+D5
+D6
+D7
+D8
+D9
+D10
+D11
+D12
+D13
+D14
+D15
+V1
+V2
+V3
+V4
+V5
+V6
+V7
+V8
+V9
+V10
+V11
+V12
+V13
+V14
+V15
+V16
+V17
+V18
+V19
+V20
+V21
+V22
+V23
+V24
+V25
+V26
+V27
+V28
+V29
+V30
+V31
+V32
+V33
+V34
+V35
+V36
+V37
+V38
+V39
+V40
+V41
+V42
+V43
+V44
+V45
+V46
+V47
+V48
+V49
+V50
+V51
+V52
+V53
+V54
+V55
+V56
+V57
+V58
+V59
+V60
+V61
+V62
+V63
+V64
+V65
+V66
+V67
+V68
+V69
+V70
+V71
+V72
+V73
+V74
+V75
+V76
+V77
+V78
+V79
+V80
+V81
+V82
+V83
+V84
+V85
+V86
+V87
+V88
+V89
+V90
+V91
+V92
+V93
+V94
+V95
+V96
+V97
+V98
+V99
+V100
+V101
+V102
+V103
+V104
+V105
+V106
+V107
+V108
+V109
+V110
+V111
+V112
+V113
+V114
+V115
+V116
+V117
+V118
+V119
+V120
+V121
+V122
+V123
+V124
+V125
+V126
+V127
+V128
+V129
+V130
+V131
+V132
+V133
+V134
+V135
+V136
+V137
+V138
+V139
+V140
+V141
+V142
+V143
+V144
+V145
+V146
+V147
+V148
+V149
+V150
+V151
+V152
+V153
+V154
+V155
+V156
+V157
+V158
+V159
+V160
+V161
+V162
+V163
+V164
+V165
+V166
+V167
+V168
+V169
+V170
+V171
+V172
+V173
+V174
+V175
+V176
+V177
+V178
+V179
+V180
+V181
+V182
+V183
+V184
+V185
+V186
+V187
+V188
+V189
+V190
+V191
+V192
+V193
+V194
+V195
+V196
+V197
+V198
+V199
+V200
+V201
+V202
+V203
+V204
+V205
+V206
+V207
+V208
+V209
+V210
+V211
+V212
+V213
+V214
+V215
+V216
+V217
+V218
+V219
+V220
+V221
+V222
+V223
+V224
+V225
+V226
+V227
+V228
+V229
+V230
+V231
+V232
+V233
+V234
+V235
+V236
+V237
+V238
+V239
+V240
+V241
+V242
+V243
+V244
+V245
+V246
+V247
+V248
+V249
+V250
+V251
+V252
+V253
+V254
+V255
+V256
+V257
+V258
+V259
+V260
+V261
+V262
+V263
+V264
+V265
+V266
+V267
+V268
+V269
+V270
+V271
+V272
+V273
+V274
+V275
+V276
+V277
+V278
+V279
+V280
+V281
+V282
+V283
+V284
+V285
+V286
+V287
+V288
+V289
+V290
+V291
+V292
+V293
+V294
+V295
+V296
+V297
+V298
+V299
+V300
+V301
+V302
+V303
+V304
+V305
+V306
+V307
+V308
+V309
+V310
+V311
+V312
+V313
+V314
+V315
+V316
+V317
+V318
+V319
+V320
+V321
+V322
+V323
+V324
+V325
+V326
+V327
+V328
+V329
+V330
+V331
+V332
+V333
+V334
+V335
+V336
+V337
+V338
+V339
+id_01
+id_02
+id_03
+id_04
+id_05
+id_06
+id_07
+id_08
+id_09
+id_10
+id_11
+id_13
+id_14
+id_17
+id_18
+id_19
+id_20
+id_21
+id_22
+id_24
+id_25
+id_26
+id_32
+transaction_hour
+transaction_day
+transaction_week
+hour_sin
+hour_cos
+identity_present
+missing_feature_count
+addr1_missing
+addr2_missing
+M1_missing
+M2_missing
+M3_missing
+M6_missing
+ProductCD_C
+ProductCD_H
+ProductCD_R
+ProductCD_S
+ProductCD_W
+card4___MISSING__
+card4_american express
+card4_discover
+card4_mastercard
+card4_visa
+card6___MISSING__
+card6___RARE__
+card6_credit
+card6_debit
+P_emaildomain___MISSING__
+P_emaildomain___RARE__
+P_emaildomain_aim.com
+P_emaildomain_anonymous.com
+P_emaildomain_aol.com
+P_emaildomain_att.net
+P_emaildomain_bellsouth.net
+P_emaildomain_cableone.net
+P_emaildomain_centurylink.net
+P_emaildomain_cfl.rr.com
+P_emaildomain_charter.net
+P_emaildomain_comcast.net
+P_emaildomain_cox.net
+P_emaildomain_earthlink.net
+P_emaildomain_embarqmail.com
+P_emaildomain_frontier.com
+P_emaildomain_frontiernet.net
+P_emaildomain_gmail
+P_emaildomain_gmail.com
+P_emaildomain_gmx.de
+P_emaildomain_hotmail.co.uk
+P_emaildomain_hotmail.com
+P_emaildomain_hotmail.es
+P_emaildomain_hotmail.fr
+P_emaildomain_icloud.com
+P_emaildomain_juno.com
+P_emaildomain_live.com
+P_emaildomain_live.com.mx
+P_emaildomain_mac.com
+P_emaildomain_mail.com
+P_emaildomain_me.com
+P_emaildomain_msn.com
+P_emaildomain_netzero.com
+P_emaildomain_netzero.net
+P_emaildomain_optonline.net
+P_emaildomain_outlook.com
+P_emaildomain_outlook.es
+P_emaildomain_prodigy.net.mx
+P_emaildomain_protonmail.com
+P_emaildomain_ptd.net
+P_emaildomain_q.com
+P_emaildomain_roadrunner.com
+P_emaildomain_rocketmail.com
+P_emaildomain_sbcglobal.net
+P_emaildomain_sc.rr.com
+P_emaildomain_suddenlink.net
+P_emaildomain_twc.com
+P_emaildomain_verizon.net
+P_emaildomain_web.de
+P_emaildomain_windstream.net
+P_emaildomain_yahoo.com
+P_emaildomain_yahoo.com.mx
+P_emaildomain_yahoo.de
+P_emaildomain_yahoo.es
+P_emaildomain_yahoo.fr
+P_emaildomain_ymail.com
+R_emaildomain___MISSING__
+R_emaildomain___RARE__
+R_emaildomain_anonymous.com
+R_emaildomain_aol.com
+R_emaildomain_att.net
+R_emaildomain_bellsouth.net
+R_emaildomain_charter.net
+R_emaildomain_comcast.net
+R_emaildomain_cox.net
+R_emaildomain_earthlink.net
+R_emaildomain_embarqmail.com
+R_emaildomain_gmail
+R_emaildomain_gmail.com
+R_emaildomain_gmx.de
+R_emaildomain_hotmail.co.uk
+R_emaildomain_hotmail.com
+R_emaildomain_hotmail.es
+R_emaildomain_hotmail.fr
+R_emaildomain_icloud.com
+R_emaildomain_juno.com
+R_emaildomain_live.com
+R_emaildomain_live.com.mx
+R_emaildomain_mac.com
+R_emaildomain_mail.com
+R_emaildomain_me.com
+R_emaildomain_msn.com
+R_emaildomain_optonline.net
+R_emaildomain_outlook.com
+R_emaildomain_outlook.es
+R_emaildomain_prodigy.net.mx
+R_emaildomain_rocketmail.com
+R_emaildomain_sbcglobal.net
+R_emaildomain_scranton.edu
+R_emaildomain_verizon.net
+R_emaildomain_web.de
+R_emaildomain_yahoo.com
+R_emaildomain_yahoo.com.mx
+R_emaildomain_yahoo.de
+R_emaildomain_yahoo.es
+R_emaildomain_yahoo.fr
+R_emaildomain_ymail.com
+M1_T
+M1___MISSING__
+M1___RARE__
+M2_F
+M2_T
+M2___MISSING__
+M3_F
+M3_T
+M3___MISSING__
+M4_M0
+M4_M1
+M4_M2
+M4___MISSING__
+M5_F
+M5_T
+M5___MISSING__
+M6_F
+M6_T
+M6___MISSING__
+M7_F
+M7_T
+M7___MISSING__
+M8_F
+M8_T
+M8___MISSING__
+M9_F
+M9_T
+M9___MISSING__
+id_12_Found
+id_12_NotFound
+id_12___MISSING__
+id_15_Found
+id_15_New
+id_15_Unknown
+id_15___MISSING__
+id_16_Found
+id_16_NotFound
+id_16___MISSING__
+id_23_IP_PROXY:ANONYMOUS
+id_23_IP_PROXY:HIDDEN
+id_23_IP_PROXY:TRANSPARENT
+id_23___MISSING__
+id_27_Found
+id_27___MISSING__
+id_27___RARE__
+id_28_Found
+id_28_New
+id_28___MISSING__
+id_29_Found
+id_29_NotFound
+id_29___MISSING__
+id_30_Android
+id_30_Android 4.4.2
+id_30_Android 5.1.1
+id_30_Android 6.0
+id_30_Android 6.0.1
+id_30_Android 7.0
+id_30_Android 7.1.1
+id_30_Android 8.0.0
+id_30_Android 8.1.0
+id_30_Linux
+id_30_Mac
+id_30_Mac OS X 10.10
+id_30_Mac OS X 10.11
+id_30_Mac OS X 10.12
+id_30_Mac OS X 10.13
+id_30_Mac OS X 10.9
+id_30_Mac OS X 10_10_5
+id_30_Mac OS X 10_11_3
+id_30_Mac OS X 10_11_5
+id_30_Mac OS X 10_11_6
+id_30_Mac OS X 10_12_3
+id_30_Mac OS X 10_12_4
+id_30_Mac OS X 10_12_5
+id_30_Mac OS X 10_12_6
+id_30_Mac OS X 10_13_1
+id_30_Mac OS X 10_13_2
+id_30_Mac OS X 10_13_3
+id_30_Mac OS X 10_13_4
+id_30_Mac OS X 10_6_8
+id_30_Mac OS X 10_7_5
+id_30_Mac OS X 10_8_5
+id_30_Mac OS X 10_9_5
+id_30_Windows 10
+id_30_Windows 7
+id_30_Windows 8
+id_30_Windows 8.1
+id_30_Windows Vista
+id_30_Windows XP
+id_30___MISSING__
+id_30___RARE__
+id_30_iOS
+id_30_iOS 10.0.2
+id_30_iOS 10.1.1
+id_30_iOS 10.2.0
+id_30_iOS 10.2.1
+id_30_iOS 10.3.1
+id_30_iOS 10.3.2
+id_30_iOS 10.3.3
+id_30_iOS 11.0.0
+id_30_iOS 11.0.1
+id_30_iOS 11.0.2
+id_30_iOS 11.0.3
+id_30_iOS 11.1.0
+id_30_iOS 11.1.1
+id_30_iOS 11.1.2
+id_30_iOS 11.2.0
+id_30_iOS 11.2.1
+id_30_iOS 11.2.2
+id_30_iOS 11.2.5
+id_30_iOS 11.2.6
+id_30_iOS 11.3.0
+id_30_iOS 9.3.5
+id_31_Generic/Android
+id_31_Generic/Android 7.0
+id_31_Samsung/SM-G532M
+id_31___MISSING__
+id_31___RARE__
+id_31_android browser 4.0
+id_31_android webview 4.0
+id_31_chrome
+id_31_chrome 46.0 for android
+id_31_chrome 49.0
+id_31_chrome 50.0 for android
+id_31_chrome 51.0
+id_31_chrome 52.0 for android
+id_31_chrome 54.0 for android
+id_31_chrome 55.0
+id_31_chrome 55.0 for android
+id_31_chrome 56.0
+id_31_chrome 56.0 for android
+id_31_chrome 57.0
+id_31_chrome 57.0 for android
+id_31_chrome 58.0
+id_31_chrome 58.0 for android
+id_31_chrome 59.0
+id_31_chrome 59.0 for android
+id_31_chrome 60.0
+id_31_chrome 60.0 for android
+id_31_chrome 61.0
+id_31_chrome 61.0 for android
+id_31_chrome 62.0
+id_31_chrome 62.0 for android
+id_31_chrome 62.0 for ios
+id_31_chrome 63.0
+id_31_chrome 63.0 for android
+id_31_chrome 63.0 for ios
+id_31_chrome 64.0
+id_31_chrome 64.0 for android
+id_31_chrome 65.0
+id_31_chrome 65.0 for android
+id_31_chrome 65.0 for ios
+id_31_chrome generic
+id_31_chrome generic for android
+id_31_edge
+id_31_edge 13.0
+id_31_edge 14.0
+id_31_edge 15.0
+id_31_edge 16.0
+id_31_firefox
+id_31_firefox 48.0
+id_31_firefox 52.0
+id_31_firefox 56.0
+id_31_firefox 57.0
+id_31_firefox 58.0
+id_31_firefox 59.0
+id_31_firefox generic
+id_31_ie 11.0 for desktop
+id_31_ie 11.0 for tablet
+id_31_mobile safari 10.0
+id_31_mobile safari 11.0
+id_31_mobile safari 9.0
+id_31_mobile safari generic
+id_31_mobile safari uiwebview
+id_31_opera
+id_31_opera 49.0
+id_31_other
+id_31_safari generic
+id_31_samsung browser 6.2
+id_31_samsung browser 6.4
+id_31_samsung browser generic
+id_33_1024x600
+id_33_1024x768
+id_33_1136x640
+id_33_1152x864
+id_33_1280x1024
+id_33_1280x1025
+id_33_1280x720
+id_33_1280x768
+id_33_1280x800
+id_33_1334x750
+id_33_1360x768
+id_33_1366x768
+id_33_1440x900
+id_33_1600x1200
+id_33_1600x900
+id_33_1680x1050
+id_33_1920x1080
+id_33_1920x1200
+id_33_2001x1125
+id_33_2048x1536
+id_33_2160x1440
+id_33_2208x1242
+id_33_2220x1080
+id_33_2220x1081
+id_33_2224x1668
+id_33_2400x1350
+id_33_2436x1125
+id_33_2560x1080
+id_33_2560x1440
+id_33_2560x1600
+id_33_2562x1442
+id_33_2672x1440
+id_33_2732x2048
+id_33_2736x1824
+id_33_2880x1800
+id_33_2961x1442
+id_33_3000x2000
+id_33_3200x1800
+id_33_3360x2100
+id_33_3440x1440
+id_33_3840x2160
+id_33_4096x2304
+id_33_5120x2880
+id_33_801x480
+id_33_855x480
+id_33_960x540
+id_33___MISSING__
+id_33___RARE__
+id_34___MISSING__
+id_34___RARE__
+id_34_match_status:0
+id_34_match_status:1
+id_34_match_status:2
+id_35_F
+id_35_T
+id_35___MISSING__
+id_36_F
+id_36_T
+id_36___MISSING__
+id_37_F
+id_37_T
+id_37___MISSING__
+id_38_F
+id_38_T
+id_38___MISSING__
+DeviceType___MISSING__
+DeviceType_desktop
+DeviceType_mobile
+DeviceInfo_ALE-L23 Build/HuaweiALE-L23
+DeviceInfo_BLADE V8 SE Build/NRD90M
+DeviceInfo_BLL-L23 Build/HUAWEIBLL-L23
+DeviceInfo_Blade V6 Plus Build/MRA58K
+DeviceInfo_CAM-L03 Build/HUAWEICAM-L03
+DeviceInfo_CHC-U03 Build/HuaweiCHC-U03
+DeviceInfo_F3113 Build/33.3.A.1.97
+DeviceInfo_F3213 Build/36.1.A.1.86
+DeviceInfo_GT-I9060M Build/KTU84P
+DeviceInfo_HTC Desire 10 lifestyle Build/MMB29M
+DeviceInfo_HTC Desire 626s Build/LMY47O
+DeviceInfo_HUAWEI G7-L03 Build/HuaweiG7-L03
+DeviceInfo_HUAWEI RIO-L03 Build/HUAWEIRIO-L03
+DeviceInfo_HUAWEI TAG-L13 Build/HUAWEITAG-L13
+DeviceInfo_HUAWEI VNS-L23 Build/HUAWEIVNS-L23
+DeviceInfo_HUAWEI VNS-L53 Build/HUAWEIVNS-L53
+DeviceInfo_Hisense L675 Build/MRA58K
+DeviceInfo_KFFOWI Build/LVY48F
+DeviceInfo_LG-D320 Build/KOT49I.V10a
+DeviceInfo_LG-D693n Build/LRX22G
+DeviceInfo_LG-H500 Build/LRX21Y
+DeviceInfo_LG-H542 Build/MRA58K
+DeviceInfo_LG-H870 Build/NRD90U
+DeviceInfo_LG-K200 Build/MXB48T
+DeviceInfo_LG-K410 Build/LRX22G
+DeviceInfo_LG-K500 Build/MMB29M
+DeviceInfo_LG-K530 Build/MMB29M
+DeviceInfo_LG-K580 Build/MRA58K
+DeviceInfo_LG-M700 Build/NMF26X
+DeviceInfo_LG-X180g Build/LMY47I
+DeviceInfo_LG-X230 Build/MRA58K
+DeviceInfo_LG-X240 Build/MRA58K
+DeviceInfo_Linux x86_64
+DeviceInfo_MYA-L13 Build/HUAWEIMYA-L13
+DeviceInfo_MacOS
+DeviceInfo_Moto
+DeviceInfo_Moto C Build/NRD90M.063
+DeviceInfo_Moto E (4) Build/NMA26.42-19
+DeviceInfo_Moto E (4) Build/NMA26.42-69
+DeviceInfo_Moto E (4) Plus Build/NMA26.42-69
+DeviceInfo_Moto G (4) Build/NPJ25.93-14.5
+DeviceInfo_Moto G (4) Build/NPJ25.93-14.7
+DeviceInfo_Moto G (4) Build/NPJS25.93-14-10
+DeviceInfo_Moto G (4) Build/NPJS25.93-14-13
+DeviceInfo_Moto G (5) Build/NPP25.137-72
+DeviceInfo_Moto G (5) Build/NPP25.137-82
+DeviceInfo_Moto G (5) Build/NPP25.137-93
+DeviceInfo_Moto G (5) Build/NPPS25.137-15-11
+DeviceInfo_Moto G (5) Plus Build/NPN25.137-72
+DeviceInfo_Moto G (5) Plus Build/NPN25.137-92
+DeviceInfo_Moto G (5) Plus Build/NPNS25.137-15-11
+DeviceInfo_Moto G Play Build/MPIS24.241-15.3-7
+DeviceInfo_Moto X Play Build/NPD26.48-24-1
+DeviceInfo_Moto Z2 Play Build/NPSS26.118-19-14
+DeviceInfo_MotoG3 Build/MPIS24.65-33.1-2-16
+DeviceInfo_PRA-LX3 Build/HUAWEIPRA-LX3
+DeviceInfo_SAMSUNG
+DeviceInfo_SAMSUNG SM-G531H Build/LMY48B
+DeviceInfo_SAMSUNG SM-G532M Build/MMB29T
+DeviceInfo_SAMSUNG SM-G935F Build/NRD90M
+DeviceInfo_SAMSUNG SM-G950F Build/NRD90M
+DeviceInfo_SAMSUNG SM-G950U Build/NRD90M
+DeviceInfo_SAMSUNG SM-G955U Build/NRD90M
+DeviceInfo_SAMSUNG SM-J700M Build/MMB29K
+DeviceInfo_SAMSUNG SM-J701M Build/NRD90M
+DeviceInfo_SAMSUNG SM-N950U Build/NMF26X
+DeviceInfo_SAMSUNG-SM-G930A Build/NRD90M
+DeviceInfo_SM-A300H Build/LRX22G
+DeviceInfo_SM-A500M Build/KTU84P
+DeviceInfo_SM-A510M Build/MMB29K
+DeviceInfo_SM-A510M Build/NRD90M
+DeviceInfo_SM-A520F Build/NRD90M
+DeviceInfo_SM-A720F Build/NRD90M
+DeviceInfo_SM-G530H Build/LRX22G
+DeviceInfo_SM-G531H Build/LMY48B
+DeviceInfo_SM-G532M Build/MMB29T
+DeviceInfo_SM-G570M Build/MMB29K
+DeviceInfo_SM-G610M Build/MMB29K
+DeviceInfo_SM-G900M Build/LRX21T
+DeviceInfo_SM-G900V Build/MMB29M
+DeviceInfo_SM-G920V Build/NRD90M
+DeviceInfo_SM-G925I Build/NRD90M
+DeviceInfo_SM-G930F Build/NRD90M
+DeviceInfo_SM-G930T Build/NRD90M
+DeviceInfo_SM-G930V Build/NRD90M
+DeviceInfo_SM-G935F Build/NRD90M
+DeviceInfo_SM-G935V Build/NRD90M
+DeviceInfo_SM-G950F Build/NRD90M
+DeviceInfo_SM-G950U Build/NRD90M
+DeviceInfo_SM-G955F Build/NRD90M
+DeviceInfo_SM-G955U Build/NRD90M
+DeviceInfo_SM-J320M Build/LMY47V
+DeviceInfo_SM-J500M Build/LMY48B
+DeviceInfo_SM-J510MN Build/MMB29M
+DeviceInfo_SM-J700M Build/LMY48B
+DeviceInfo_SM-J700M Build/MMB29K
+DeviceInfo_SM-J701M Build/NRD90M
+DeviceInfo_SM-J710MN Build/MMB29K
+DeviceInfo_SM-J730GM Build/NRD90M
+DeviceInfo_SM-N920V Build/NRD90M
+DeviceInfo_SM-N950U Build/NMF26X
+DeviceInfo_TRT-L53 Build/HUAWEITRT-L53
+DeviceInfo_Trident/7.0
+DeviceInfo_WAS-LX3 Build/HUAWEIWAS-LX3
+DeviceInfo_Windows
+DeviceInfo_XT1635-02 Build/NPN26.118-22-2
+DeviceInfo___MISSING__
+DeviceInfo___RARE__
+DeviceInfo_hi6210sft Build/MRA58K
+DeviceInfo_iOS Device
+DeviceInfo_rv:11.0
+DeviceInfo_rv:48.0
+DeviceInfo_rv:52.0
+DeviceInfo_rv:56.0
+DeviceInfo_rv:57.0
+DeviceInfo_rv:58.0
+DeviceInfo_rv:59.0
