@@ -19,15 +19,6 @@ export default function TransactionForm({
   onLoading,
   onError,
 }: TransactionFormProps) {
-
-  /*
-   * Only expose meaningful transaction information
-   * to the user.
-   *
-   * Dataset-specific fields such as ProductCD,
-   * billing address and billing region stay hidden.
-   */
-
   const [form, setForm] = useState({
     transaction_amount: 250.5,
     transaction_hour: new Date().getHours(),
@@ -64,99 +55,60 @@ export default function TransactionForm({
     onError("");
 
     try {
-
-      /*
-       * Hidden fields are supplied internally.
-       *
-       * The user doesn't need to know about these
-       * IEEE-CIS dataset-specific representations.
-       */
-
       const payload: CustomTransaction = {
+        transaction_amount: Number(
+          form.transaction_amount
+        ),
 
-        transaction_amount:
-          Number(form.transaction_amount),
+        transaction_hour: Number(
+          form.transaction_hour
+        ),
 
-        transaction_hour:
-          Number(form.transaction_hour),
+        card_network: form.card_network,
 
-        /*
-         * Backend/model fields
-         * --------------------
-         */
-
-        product_code: "W",
-
-        card_network:
-          form.card_network,
-
-        card_type:
-          form.card_type,
-
-        billing_address: null,
-
-        billing_region: null,
+        card_type: form.card_type,
 
         transaction_distance:
           form.transaction_distance === null
             ? null
-            : Number(
-                form.transaction_distance
-              ),
-
-        secondary_distance: null,
+            : Number(form.transaction_distance),
 
         purchaser_email_domain:
           form.purchaser_email_domain
             ?.trim()
             .toLowerCase() || null,
 
-        recipient_email_domain: null,
-
         device_type:
           form.device_type || null,
 
         device_info:
-          form.device_info
-            ?.trim() || null,
+          form.device_info?.trim() || null,
 
         identity_available:
           form.identity_available,
       };
 
       const result =
-        await predictCustomTransaction(
-          payload
-        );
+        await predictCustomTransaction(payload);
 
       onResult(result);
-
     } catch (error) {
-
       onError(
         error instanceof Error
           ? error.message
           : "Unable to connect to FraudGuard API."
       );
-
     } finally {
-
       onLoading(false);
-
     }
   }
 
   return (
     <section className="dashboard-panel investigation-panel">
-
-      {/* ==========================================
-          HEADER
-      ========================================== */}
+      {/* HEADER */}
 
       <div className="panel-header">
-
         <div>
-
           <span className="section-number">
             01
           </span>
@@ -164,40 +116,29 @@ export default function TransactionForm({
           <span className="section-name">
             TRANSACTION INVESTIGATION
           </span>
-
         </div>
 
         <span className="panel-meta">
           LIVE TRANSACTION ANALYSIS
         </span>
-
       </div>
 
-
-      {/* ==========================================
-          FORM
-      ========================================== */}
+      {/* FORM */}
 
       <form
         className="transaction-form"
         onSubmit={handleSubmit}
       >
-
         <div className="form-grid">
 
-
-          {/* ----------------------------------------
-              TRANSACTION AMOUNT
-          ---------------------------------------- */}
+          {/* TRANSACTION AMOUNT */}
 
           <div className="form-field">
-
             <label>
               TRANSACTION AMOUNT
             </label>
 
             <div className="input-wrapper">
-
               <span className="input-prefix">
                 ₹
               </span>
@@ -212,24 +153,24 @@ export default function TransactionForm({
                 onChange={(event) =>
                   updateField(
                     "transaction_amount",
-                    event.target.value
+                    event.target.value === ""
+                      ? 0
+                      : Number(event.target.value)
                   )
                 }
                 placeholder="250.50"
                 required
               />
-
             </div>
 
+            <span className="field-hint">
+              Transaction amount in INR
+            </span>
           </div>
 
-
-          {/* ----------------------------------------
-              TRANSACTION HOUR
-          ---------------------------------------- */}
+          {/* TRANSACTION HOUR */}
 
           <div className="form-field">
-
             <label>
               TRANSACTION HOUR
             </label>
@@ -244,7 +185,9 @@ export default function TransactionForm({
               onChange={(event) =>
                 updateField(
                   "transaction_hour",
-                  Number(event.target.value)
+                  event.target.value === ""
+                    ? 0
+                    : Number(event.target.value)
                 )
               }
               required
@@ -253,16 +196,11 @@ export default function TransactionForm({
             <span className="field-hint">
               0–23 hour format
             </span>
-
           </div>
 
-
-          {/* ----------------------------------------
-              CARD NETWORK
-          ---------------------------------------- */}
+          {/* CARD NETWORK */}
 
           <div className="form-field">
-
             <label>
               CARD NETWORK
             </label>
@@ -278,7 +216,6 @@ export default function TransactionForm({
                 )
               }
             >
-
               <option value="visa">
                 Visa
               </option>
@@ -294,18 +231,12 @@ export default function TransactionForm({
               <option value="discover">
                 Discover
               </option>
-
             </select>
-
           </div>
 
-
-          {/* ----------------------------------------
-              CARD TYPE
-          ---------------------------------------- */}
+          {/* CARD TYPE */}
 
           <div className="form-field">
-
             <label>
               CARD TYPE
             </label>
@@ -321,7 +252,6 @@ export default function TransactionForm({
                 )
               }
             >
-
               <option value="credit">
                 Credit
               </option>
@@ -329,24 +259,17 @@ export default function TransactionForm({
               <option value="debit">
                 Debit
               </option>
-
             </select>
-
           </div>
 
-
-          {/* ----------------------------------------
-              TRANSACTION DISTANCE
-          ---------------------------------------- */}
+          {/* TRANSACTION DISTANCE */}
 
           <div className="form-field">
-
             <label>
               TRANSACTION DISTANCE
             </label>
 
             <div className="input-wrapper">
-
               <input
                 type="number"
                 min="0"
@@ -371,22 +294,16 @@ export default function TransactionForm({
               <span className="input-suffix">
                 KM
               </span>
-
             </div>
 
             <span className="field-hint">
               Distance associated with transaction
             </span>
-
           </div>
 
-
-          {/* ----------------------------------------
-              EMAIL DOMAIN
-          ---------------------------------------- */}
+          {/* EMAIL DOMAIN */}
 
           <div className="form-field">
-
             <label>
               PURCHASER EMAIL DOMAIN
             </label>
@@ -406,15 +323,14 @@ export default function TransactionForm({
               placeholder="gmail.com"
             />
 
+            <span className="field-hint">
+              Example: gmail.com
+            </span>
           </div>
 
-
-          {/* ----------------------------------------
-              DEVICE TYPE
-          ---------------------------------------- */}
+          {/* DEVICE TYPE */}
 
           <div className="form-field">
-
             <label>
               DEVICE TYPE
             </label>
@@ -430,7 +346,6 @@ export default function TransactionForm({
                 )
               }
             >
-
               <option value="mobile">
                 Mobile
               </option>
@@ -442,18 +357,12 @@ export default function TransactionForm({
               <option value="tablet">
                 Tablet
               </option>
-
             </select>
-
           </div>
 
-
-          {/* ----------------------------------------
-              DEVICE INFORMATION
-          ---------------------------------------- */}
+          {/* DEVICE INFORMATION */}
 
           <div className="form-field">
-
             <label>
               DEVICE INFORMATION
             </label>
@@ -472,15 +381,14 @@ export default function TransactionForm({
               placeholder="iPhone"
             />
 
+            <span className="field-hint">
+              Device or browser information
+            </span>
           </div>
 
-
-          {/* ----------------------------------------
-              IDENTITY AVAILABILITY
-          ---------------------------------------- */}
+          {/* IDENTITY INFORMATION */}
 
           <div className="form-field">
-
             <label>
               IDENTITY INFORMATION
             </label>
@@ -499,7 +407,6 @@ export default function TransactionForm({
                 )
               }
             >
-
               <option value="available">
                 Available
               </option>
@@ -507,22 +414,19 @@ export default function TransactionForm({
               <option value="unavailable">
                 Unavailable
               </option>
-
             </select>
 
+            <span className="field-hint">
+              Whether identity data is available
+            </span>
           </div>
 
         </div>
 
-
-        {/* ==========================================
-            FORM FOOTER
-        ========================================== */}
+        {/* FORM FOOTER */}
 
         <div className="form-actions">
-
           <div className="form-status">
-
             <span className="status-dot" />
 
             <span>
@@ -534,29 +438,22 @@ export default function TransactionForm({
             </span>
 
             <span>
-              XGBOOST DAY 7 CHAMPION
+              XGBOOST CUSTOM SCREENING MODEL
             </span>
-
           </div>
-
 
           <button
             type="submit"
             className="analyze-button"
           >
-
             RUN FRAUD ANALYSIS
 
             <span>
               →
             </span>
-
           </button>
-
         </div>
-
       </form>
-
     </section>
   );
 }

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap");
 
 :root {
   --bg: #061014;
@@ -10,8 +10,8 @@
   --line-soft: #102a31;
 
   --text: #d9e5e8;
-  --muted: #668088;
-  --dim: #3e5c64;
+  --muted: #789198;
+  --dim: #4d6971;
 
   --cyan: #49d5e8;
   --cyan-soft: rgba(73, 213, 232, 0.16);
@@ -39,6 +39,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-mono);
+  font-size: 14px;
 }
 
 /* =========================================================
@@ -62,7 +63,8 @@ body {
 
   background-size: 44px 44px;
 
-  transition: --risk-color 0.25s ease;
+  transition:
+    --risk-color 0.25s ease;
 }
 
 /* =========================================================
@@ -113,12 +115,12 @@ body {
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 13px;
 }
 
 .brand-shield {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
 
   display: flex;
   align-items: center;
@@ -134,7 +136,7 @@ body {
 }
 
 .brand-name {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   letter-spacing: 3px;
   color: var(--text);
@@ -143,7 +145,7 @@ body {
 .brand-subtitle {
   margin-top: 4px;
 
-  font-size: 7px;
+  font-size: 8px;
   letter-spacing: 2px;
 
   color: var(--muted);
@@ -152,9 +154,9 @@ body {
 .navigation {
   display: flex;
   align-items: center;
-  gap: 13px;
+  gap: 14px;
 
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 1px;
 
   color: var(--dim);
@@ -171,7 +173,7 @@ body {
   align-items: center;
   gap: 9px;
 
-  font-size: 8px;
+  font-size: 9px;
   letter-spacing: 1px;
 
   color: var(--muted);
@@ -189,9 +191,9 @@ body {
 
 .header-divider {
   width: 1px;
-  height: 20px;
+  height: 22px;
 
-  margin: 0 7px;
+  margin: 0 8px;
 
   background: var(--line);
 }
@@ -199,16 +201,16 @@ body {
 .model-display {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
 }
 
 .model-display small {
-  font-size: 7px;
+  font-size: 8px;
   color: var(--dim);
 }
 
 .model-display strong {
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 500;
 
   color: var(--text);
@@ -263,7 +265,7 @@ body {
 
 .section-header,
 .panel-header {
-  min-height: 40px;
+  min-height: 43px;
 
   display: flex;
   align-items: center;
@@ -277,31 +279,33 @@ body {
 .section-number {
   color: var(--cyan);
 
-  font-size: 8px;
+  font-size: 9px;
   letter-spacing: 1px;
 
   margin-right: 13px;
 }
 
 .section-name {
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 1.5px;
+  font-weight: 500;
+
   color: var(--text);
 }
 
 .section-source,
 .panel-meta {
-  font-size: 7px;
+  font-size: 8px;
   letter-spacing: 1px;
   color: var(--dim);
 }
 
 /* =========================================================
-   LIVE TRANSACTION FORM
+   TRANSACTION FORM
    ========================================================= */
 
 .transaction-form {
-  padding: 20px 18px 16px;
+  padding: 22px 16px 16px;
 }
 
 .form-grid {
@@ -310,21 +314,22 @@ body {
   grid-template-columns:
     repeat(4, minmax(0, 1fr));
 
-  gap: 14px 16px;
+  gap: 18px 14px;
 }
 
 .form-field {
-  display: flex;
-  flex-direction: column;
-
   min-width: 0;
 }
 
 .form-field label {
-  margin-bottom: 7px;
+  display: block;
 
-  font-size: 7px;
-  letter-spacing: 1.2px;
+  margin-bottom: 8px;
+
+  font-size: 9px;
+  font-weight: 500;
+
+  letter-spacing: 1.4px;
 
   color: var(--dim);
 }
@@ -332,7 +337,10 @@ body {
 .form-field input,
 .form-field select {
   width: 100%;
-  height: 38px;
+
+  height: 43px;
+
+  padding: 0 12px;
 
   border: 1px solid var(--line);
 
@@ -343,32 +351,20 @@ body {
   color: var(--text);
 
   font-family: var(--font-mono);
-  font-size: 9px;
-
-  padding: 0 11px;
-
-  border-radius: 0;
+  font-size: 13px;
 
   transition:
     border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
-}
-
-.form-field input:hover,
-.form-field select:hover {
-  border-color: #24515c;
+    box-shadow 0.2s ease;
 }
 
 .form-field input:focus,
 .form-field select:focus {
   border-color: var(--cyan);
 
-  background: rgba(73, 213, 232, 0.035);
-
   box-shadow:
-    0 0 0 1px rgba(73, 213, 232, 0.08),
-    0 0 16px rgba(73, 213, 232, 0.05);
+    0 0 0 1px rgba(73, 213, 232, 0.1),
+    0 0 15px rgba(73, 213, 232, 0.04);
 }
 
 .form-field input::placeholder {
@@ -377,36 +373,33 @@ body {
 
 .form-field select {
   cursor: pointer;
-
-  appearance: none;
-
-  background-image:
-    linear-gradient(45deg, transparent 50%, var(--cyan) 50%),
-    linear-gradient(135deg, var(--cyan) 50%, transparent 50%);
-
-  background-position:
-    calc(100% - 14px) 15px,
-    calc(100% - 10px) 15px;
-
-  background-size:
-    4px 4px,
-    4px 4px;
-
-  background-repeat: no-repeat;
-
-  padding-right: 30px;
 }
 
 .form-field select option {
-  background: #08161b;
+  background: var(--panel);
   color: var(--text);
 }
 
-/* Remove number arrows */
+/* =========================================================
+   FIELD HELP TEXT
+   ========================================================= */
 
-.form-field input[type="number"]::-webkit-inner-spin-button,
-.form-field input[type="number"]::-webkit-outer-spin-button {
-  opacity: 0.35;
+.field-help {
+  margin-top: 6px;
+
+  font-size: 8px;
+  line-height: 1.4;
+
+  color: var(--dim);
+}
+
+.field-unit {
+  margin-top: 6px;
+
+  font-size: 8px;
+  letter-spacing: 1px;
+
+  color: var(--muted);
 }
 
 /* =========================================================
@@ -414,35 +407,27 @@ body {
    ========================================================= */
 
 .form-actions {
-  display: flex;
+  margin-top: 24px;
 
-  align-items: center;
-  justify-content: space-between;
-
-  margin-top: 18px;
-
-  padding-top: 14px;
+  padding-top: 16px;
 
   border-top: 1px solid var(--line);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .form-actions > span {
-  font-size: 7px;
+  font-size: 9px;
   letter-spacing: 1px;
 
   color: var(--dim);
 }
 
-.form-actions .analyze-button {
-  width: 190px;
-}
-
-/* =========================================================
-   ANALYZE BUTTON
-   ========================================================= */
-
 .analyze-button {
-  height: 44px;
+  min-width: 180px;
+  height: 48px;
 
   border: 1px solid var(--cyan);
 
@@ -450,7 +435,8 @@ body {
   color: #031014;
 
   font-family: var(--font-mono);
-  font-size: 8px;
+
+  font-size: 10px;
   font-weight: 600;
 
   letter-spacing: 1px;
@@ -461,7 +447,7 @@ body {
   align-items: center;
   justify-content: space-between;
 
-  padding: 0 15px;
+  padding: 0 18px;
 
   transition:
     background 0.2s ease,
@@ -486,16 +472,18 @@ body {
 }
 
 .analyze-button span {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 /* =========================================================
-   LEGACY INVESTIGATION INPUT
+   OLD INVESTIGATION INPUT
    ========================================================= */
 
 .investigation-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 195px;
+
+  grid-template-columns:
+    minmax(0, 1fr) 195px;
 
   gap: 10px;
 
@@ -525,7 +513,7 @@ body {
 }
 
 .tx-label {
-  font-size: 9px;
+  font-size: 10px;
   color: var(--cyan);
   letter-spacing: 1px;
 }
@@ -560,7 +548,7 @@ body {
 }
 
 .input-type {
-  font-size: 7px;
+  font-size: 8px;
   color: var(--dim);
   letter-spacing: 1px;
 }
@@ -571,7 +559,7 @@ body {
 
   padding: 0 14px 10px;
 
-  font-size: 7px;
+  font-size: 8px;
   letter-spacing: 0.5px;
 
   color: var(--dim);
@@ -580,7 +568,7 @@ body {
 .api-error {
   margin: 0 13px 12px;
 
-  padding: 9px 12px;
+  padding: 10px 12px;
 
   border: 1px solid rgba(255, 77, 90, 0.4);
 
@@ -588,7 +576,7 @@ body {
 
   color: var(--red);
 
-  font-size: 8px;
+  font-size: 9px;
 
   display: flex;
   gap: 9px;
@@ -596,7 +584,7 @@ body {
 }
 
 .api-error span {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
 }
 
@@ -622,7 +610,7 @@ body {
 }
 
 .panel-header {
-  height: 40px;
+  height: 43px;
 }
 
 .panel-header > div {
@@ -641,11 +629,11 @@ body {
    ========================================================= */
 
 .snapshot-content {
-  padding: 22px 20px;
+  padding: 24px 20px;
 }
 
 .transaction-id-block {
-  padding-bottom: 21px;
+  padding-bottom: 22px;
 
   border-bottom: 1px solid var(--line);
 }
@@ -653,16 +641,16 @@ body {
 .data-label {
   display: block;
 
-  font-size: 7px;
+  font-size: 8px;
   letter-spacing: 1.5px;
 
   color: var(--dim);
 }
 
 .large-id {
-  margin-top: 10px;
+  margin-top: 11px;
 
-  font-size: 27px;
+  font-size: 30px;
   font-weight: 400;
 
   letter-spacing: -1px;
@@ -671,7 +659,7 @@ body {
 }
 
 .snapshot-row {
-  min-height: 52px;
+  min-height: 56px;
 
   display: flex;
   align-items: center;
@@ -685,7 +673,7 @@ body {
 }
 
 .snapshot-row > span:last-child {
-  font-size: 9px;
+  font-size: 10px;
   color: var(--text);
 
   text-align: right;
@@ -700,15 +688,15 @@ body {
    ========================================================= */
 
 .verdict-content {
-  padding: 21px 20px;
+  padding: 23px 20px;
 }
 
 .probability {
-  margin-top: 8px;
+  margin-top: 10px;
 
   font-family: var(--font-mono);
 
-  font-size: 59px;
+  font-size: 64px;
   line-height: 1;
 
   letter-spacing: -4px;
@@ -720,7 +708,7 @@ body {
 }
 
 .probability span {
-  font-size: 15px;
+  font-size: 17px;
   letter-spacing: 0;
 
   margin-left: 4px;
@@ -728,9 +716,9 @@ body {
 
 .probability-bar {
   width: 100%;
-  height: 4px;
+  height: 5px;
 
-  margin-top: 22px;
+  margin-top: 23px;
 
   background: #14272d;
 
@@ -752,30 +740,30 @@ body {
   display: flex;
   justify-content: space-between;
 
-  margin-top: 6px;
+  margin-top: 7px;
 
-  font-size: 6px;
+  font-size: 7px;
   color: var(--dim);
 }
 
 .verdict-box {
-  margin-top: 22px;
+  margin-top: 23px;
 
-  min-height: 61px;
+  min-height: 66px;
 
   display: flex;
   align-items: center;
 
   gap: 13px;
 
-  padding: 11px;
+  padding: 12px;
 
   border: 1px solid var(--line);
 }
 
 .verdict-icon {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
 
   display: flex;
   align-items: center;
@@ -785,7 +773,7 @@ body {
 
   color: var(--risk-color);
 
-  font-size: 14px;
+  font-size: 15px;
 
   box-shadow:
     0 0 15px var(--risk-glow);
@@ -796,7 +784,7 @@ body {
 
   margin-top: 5px;
 
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 1px;
 
   color: var(--risk-color);
@@ -804,16 +792,18 @@ body {
 
 .verdict-stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
 
-  margin-top: 16px;
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  margin-top: 17px;
 
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
 
 .verdict-stat {
-  min-height: 55px;
+  min-height: 58px;
 
   padding: 11px;
 
@@ -829,7 +819,7 @@ body {
 
   margin-top: 7px;
 
-  font-size: 9px;
+  font-size: 10px;
 
   color: var(--text);
 }
@@ -839,7 +829,7 @@ body {
    ========================================================= */
 
 .evidence-content {
-  height: calc(100% - 40px);
+  height: calc(100% - 43px);
 
   display: flex;
   flex-direction: column;
@@ -906,8 +896,8 @@ body {
 .evidence-core {
   position: absolute;
 
-  width: 86px;
-  height: 86px;
+  width: 88px;
+  height: 88px;
 
   display: flex;
   flex-direction: column;
@@ -924,26 +914,26 @@ body {
 }
 
 .evidence-core span {
-  font-size: 7px;
+  font-size: 8px;
   color: var(--dim);
 }
 
 .evidence-core strong {
   margin: 4px 0;
 
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text);
 }
 
 .evidence-core small {
-  font-size: 6px;
+  font-size: 7px;
   color: var(--risk-color);
 }
 
 .evidence-node {
   position: absolute;
 
-  width: 100px;
+  width: 105px;
 
   display: flex;
   align-items: center;
@@ -983,11 +973,11 @@ body {
   display: flex;
   flex-direction: column;
 
-  margin-left: 7px;
+  margin-left: 8px;
 }
 
 .node-label strong {
-  font-size: 7px;
+  font-size: 8px;
   letter-spacing: 1px;
 
   color: var(--text);
@@ -996,7 +986,7 @@ body {
 .node-label small {
   margin-top: 3px;
 
-  font-size: 6px;
+  font-size: 7px;
   color: var(--risk-color);
 }
 
@@ -1010,7 +1000,7 @@ body {
 }
 
 .evidence-node.top .node-label {
-  margin: 6px 0 0;
+  margin: 7px 0 0;
   text-align: center;
 }
 
@@ -1031,7 +1021,7 @@ body {
 }
 
 .evidence-node.bottom .node-label {
-  margin: 0 0 6px;
+  margin: 0 0 7px;
   text-align: center;
   order: -1;
 }
@@ -1046,22 +1036,22 @@ body {
 }
 
 .evidence-node.left .node-label {
-  margin: 0 7px 0 0;
+  margin: 0 8px 0 0;
   text-align: right;
 }
 
 .risk-legend {
-  height: 38px;
+  height: 40px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  gap: 20px;
+  gap: 21px;
 
   border-top: 1px solid var(--line);
 
-  font-size: 6px;
+  font-size: 7px;
   letter-spacing: 0.5px;
 }
 
@@ -1109,8 +1099,8 @@ body {
 }
 
 .trace-number {
-  width: 29px;
-  height: 29px;
+  width: 31px;
+  height: 31px;
 
   flex-shrink: 0;
 
@@ -1118,20 +1108,20 @@ body {
   align-items: center;
   justify-content: center;
 
-  margin-right: 9px;
+  margin-right: 10px;
 
   border: 1px solid var(--line);
 
   color: var(--cyan);
 
-  font-size: 7px;
+  font-size: 8px;
 }
 
 .trace-step strong {
   display: block;
 
-  font-size: 7px;
-  letter-spacing: 0.7px;
+  font-size: 8px;
+  letter-spacing: 0.8px;
 
   color: var(--text);
 }
@@ -1139,9 +1129,9 @@ body {
 .trace-step span {
   display: block;
 
-  margin-top: 4px;
+  margin-top: 5px;
 
-  font-size: 6px;
+  font-size: 7px;
 
   color: var(--dim);
 }
@@ -1193,7 +1183,7 @@ body {
 
   color: var(--dim);
 
-  font-size: 13px;
+  font-size: 14px;
 }
 
 /* =========================================================
@@ -1210,9 +1200,11 @@ body {
   border-top: 1px solid var(--line);
 
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
 
-  font-size: 6px;
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  font-size: 7px;
   letter-spacing: 1px;
 
   color: var(--dim);
@@ -1245,16 +1237,17 @@ body {
     display: none;
   }
 
-  .form-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .analysis-grid {
     grid-template-columns: 1fr 1fr;
   }
 
   .evidence-panel {
     grid-column: span 2;
+  }
+
+  .form-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -1287,10 +1280,10 @@ body {
   .form-actions {
     align-items: stretch;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
   }
 
-  .form-actions .analyze-button {
+  .analyze-button {
     width: 100%;
   }
 
@@ -1332,4 +1325,43 @@ body {
   .footer span:last-child {
     text-align: left;
   }
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding-right: 48px;
+}
+
+.input-suffix {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 1px;
+
+  color: var(--muted);
+
+  pointer-events: none;
+}
+
+.field-hint {
+  display: block;
+
+  margin-top: 7px;
+
+  font-size: 8px;
+  line-height: 1.4;
+
+  letter-spacing: 0.2px;
+
+  color: var(--dim);
 }
