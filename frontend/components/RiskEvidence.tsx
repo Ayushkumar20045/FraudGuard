@@ -10,22 +10,34 @@ export default function RiskEvidence({
 }: RiskEvidenceProps) {
   const risk = result?.risk_level || "LOW";
 
-  const labels = [
+  const signals = [
     {
-      name: "IDENTITY",
+      name: "RISK LEVEL",
       position: "top",
+      value: result ? risk : "UNASSESSED",
     },
     {
-      name: "CARD",
+      name: "PREDICTION",
       position: "right",
+      value: result
+        ? result.prediction === 1
+          ? "FRAUD"
+          : "LEGITIMATE"
+        : "UNASSESSED",
     },
     {
-      name: "BEHAVIOR",
+      name: "FEATURE SPACE",
       position: "bottom",
+      value: result
+        ? `${result.features} DIMENSIONS`
+        : "UNASSESSED",
     },
     {
-      name: "ADDRESS",
+      name: "MODEL",
       position: "left",
+      value: result
+        ? "XGBOOST"
+        : "UNASSESSED",
     },
   ];
 
@@ -34,8 +46,8 @@ export default function RiskEvidence({
 
       <PanelHeader
         number="04"
-        title="RISK EVIDENCE"
-        meta="SIGNAL GROUPS"
+        title="MODEL SIGNALS"
+        meta="DERIVED OUTPUTS"
       />
 
       <div className="evidence-content">
@@ -49,7 +61,7 @@ export default function RiskEvidence({
           <div className="radar-cross horizontal" />
           <div className="radar-cross vertical" />
 
-          {labels.map((signal) => (
+          {signals.map((signal) => (
             <div
               key={signal.name}
               className={`evidence-node ${signal.position}`}
@@ -68,9 +80,7 @@ export default function RiskEvidence({
                 </strong>
 
                 <small>
-                  {result
-                    ? `${risk} RISK`
-                    : "UNASSESSED"}
+                  {signal.value}
                 </small>
 
               </div>
@@ -81,18 +91,18 @@ export default function RiskEvidence({
           <div className="evidence-core">
 
             <span>
-              TX
+              FRAUD PROBABILITY
             </span>
 
             <strong>
               {result
-                ? result.transaction_id
+                ? `${(result.fraud_probability * 100).toFixed(2)}%`
                 : "—"}
             </strong>
 
             <small>
               {result
-                ? `${risk} RISK`
+                ? risk
                 : "UNASSESSED"}
             </small>
 

@@ -4,36 +4,14 @@ export type RiskLevel =
   | "HIGH";
 
 
-export type CustomTransaction = {
-  transaction_amount: number;
-
-  transaction_hour: number;
-
-  card_network: string;
-
-  card_type: string;
-
-  transaction_distance:
-    | number
-    | null;
-
-  purchaser_email_domain:
-    | string
-    | null;
-
-  device_type:
-    | string
-    | null;
-
-  device_info:
-    | string
-    | null;
-
-  identity_available: boolean;
+export type TransactionRequest = {
+  TransactionID: number;
 };
 
 
 export type PredictionResult = {
+  transaction_id: number;
+
   fraud_probability: number;
 
   prediction: number;
@@ -50,12 +28,12 @@ const API_URL =
   "http://127.0.0.1:8000";
 
 
-export async function predictCustomTransaction(
-  transaction: CustomTransaction
+export async function predictTransaction(
+  transaction: TransactionRequest
 ): Promise<PredictionResult> {
 
   const response = await fetch(
-    `${API_URL}/predict/custom`,
+    `${API_URL}/predict`,
     {
       method: "POST",
 
@@ -71,22 +49,33 @@ export async function predictCustomTransaction(
   );
 
 
-  let data: any;
+  let data: unknown;
 
   try {
+
     data = await response.json();
+
   } catch {
+
     throw new Error(
       "Invalid response received from FraudGuard API."
     );
+
   }
 
 
   if (!response.ok) {
+
+    const errorData =
+      data as {
+        detail?: string;
+      };
+
     throw new Error(
-      data?.detail ||
+      errorData.detail ||
         "Transaction analysis failed."
     );
+
   }
 
 

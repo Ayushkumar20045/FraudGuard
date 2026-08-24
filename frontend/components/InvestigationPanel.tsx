@@ -18,10 +18,13 @@ export default function InvestigationPanel({
   return (
     <section className="investigation-panel">
 
+      {/* =====================================================
+          HEADER
+      ===================================================== */}
+
       <div className="section-header">
 
         <div>
-
           <span className="section-number">
             01
           </span>
@@ -29,58 +32,175 @@ export default function InvestigationPanel({
           <span className="section-name">
             TRANSACTION INVESTIGATION
           </span>
-
         </div>
 
         <span className="section-source">
-          IEEE-CIS / TRAIN TRANSACTION
+          LIVE TRANSACTION ANALYSIS
         </span>
 
       </div>
 
-      <div className="investigation-row">
 
-        <div className="transaction-input">
+      {/* =====================================================
+          MAIN INVESTIGATION AREA
+      ===================================================== */}
 
-          <span className="tx-label">
-            TX
+      <div className="investigation-main">
+
+        <div className="investigation-input-area">
+
+          <span className="data-label">
+            TRANSACTION ID
           </span>
 
-          <span className="input-divider" />
+          <div className="transaction-input">
 
-          <input
-            value={transactionId}
-            onChange={(e) =>
-              onTransactionIdChange(e.target.value)
-            }
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                onInvestigate();
+            <span className="tx-label">
+              TX
+            </span>
+
+            <span className="input-divider" />
+
+            <input
+              value={transactionId}
+              onChange={(e) =>
+                onTransactionIdChange(e.target.value)
               }
-            }}
-            placeholder="TransactionID"
-            type="number"
-          />
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  onInvestigate();
+                }
+              }}
+              placeholder="Enter transaction ID"
+              type="number"
+              aria-label="Transaction ID"
+            />
 
-          <span className="input-type">
-            INTEGER
+            <span className="input-type">
+              INTEGER
+            </span>
+
+          </div>
+
+          <span className="transaction-helper">
+            IEEE-CIS transaction identifier
           </span>
 
         </div>
 
-        <button
-          className="analyze-button"
-          onClick={onInvestigate}
-          disabled={loading}
-        >
-          {loading
-            ? "ANALYZING..."
-            : "ANALYZE TRANSACTION"}
 
-          <span>→</span>
-        </button>
+        {/* =================================================
+            STATUS STRIP
+        ================================================= */}
+
+        <div className="system-status-strip">
+
+          <div className="status-block">
+
+            <span className="status-indicator active" />
+
+            <div>
+              <small>
+                MODEL STATUS
+              </small>
+
+              <strong>
+                {loading
+                  ? "PROCESSING"
+                  : "READY"}
+              </strong>
+            </div>
+
+          </div>
+
+
+          <div className="status-divider" />
+
+
+          <div className="status-block">
+
+            <span className="status-indicator active" />
+
+            <div>
+              <small>
+                FEATURE PIPELINE
+              </small>
+
+              <strong>
+                891 FEATURES
+              </strong>
+            </div>
+
+          </div>
+
+
+          <div className="status-divider" />
+
+
+          <div className="status-block">
+
+            <span className="status-indicator active" />
+
+            <div>
+              <small>
+                INFERENCE CHANNEL
+              </small>
+
+              <strong>
+                SECURE / LIVE
+              </strong>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        {/* =================================================
+            ACTION ROW
+        ================================================= */}
+
+        <div className="investigation-action">
+
+          <div className="model-ready">
+
+            <span className="ready-pulse" />
+
+            <span>
+              {loading
+                ? "RUNNING XGBOOST INFERENCE"
+                : "MODEL READY / XGBOOST DAY 7 CHAMPION"}
+            </span>
+
+          </div>
+
+
+          <button
+            className="analyze-button"
+            onClick={onInvestigate}
+            disabled={loading}
+          >
+
+            <span className="button-label">
+              {loading
+                ? "ANALYZING TRANSACTION"
+                : "INVESTIGATE TRANSACTION"}
+            </span>
+
+            <span className="button-arrow">
+              →
+            </span>
+
+          </button>
+
+        </div>
 
       </div>
+
+
+      {/* =====================================================
+          QUERY FOOTER
+      ===================================================== */}
 
       <div className="query-footer">
 
@@ -90,7 +210,7 @@ export default function InvestigationPanel({
             : error
             ? "Analysis failed"
             : transactionId
-            ? "Analysis complete"
+            ? "Transaction ready for investigation"
             : "Ready to analyze transaction"}
         </span>
 
@@ -99,6 +219,11 @@ export default function InvestigationPanel({
         </span>
 
       </div>
+
+
+      {/* =====================================================
+          ERROR
+      ===================================================== */}
 
       {error && (
         <div className="api-error">

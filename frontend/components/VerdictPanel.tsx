@@ -13,7 +13,8 @@ export default function VerdictPanel({
     ? result.fraud_probability * 100
     : 0;
 
-  const isFraud = result?.prediction === 1;
+  const isFraud =
+    result?.prediction === 1;
 
   const verdict = result
     ? isFraud
@@ -29,6 +30,7 @@ export default function VerdictPanel({
 
   return (
     <section className="dashboard-panel verdict-panel">
+
       <PanelHeader
         number="03"
         title="RISK VERDICT"
@@ -37,32 +39,51 @@ export default function VerdictPanel({
 
       <div className="verdict-content">
 
-        {/* Probability */}
+        {/* ==========================================
+            FRAUD PROBABILITY
+        ========================================== */}
+
         <div className="probability-section">
+
           <span className="data-label">
             ESTIMATED FRAUD PROBABILITY
           </span>
 
           <div className="probability">
+
             {result
               ? probability.toFixed(2)
               : "—"}
 
-            <span>%</span>
+            <span>
+              %
+            </span>
+
           </div>
 
           <ProbabilityBar
             probability={probability}
           />
+
         </div>
 
-        {/* Verdict */}
+
+        {/* ==========================================
+            MODEL VERDICT
+        ========================================== */}
+
         <div className="verdict-box">
+
           <div className="verdict-icon">
-            !
+            {result
+              ? isFraud
+                ? "!"
+                : "✓"
+              : "!"}
           </div>
 
           <div className="verdict-message">
+
             <span className="data-label">
               MODEL VERDICT
             </span>
@@ -70,15 +91,23 @@ export default function VerdictPanel({
             <strong>
               {verdict}
             </strong>
+
           </div>
+
         </div>
 
-        {/* Statistics */}
+
+        {/* ==========================================
+            MODEL STATISTICS
+        ========================================== */}
+
         <div className="verdict-stats">
 
           <VerdictStat
             label="RISK"
-            value={result?.risk_level || "—"}
+            value={
+              result?.risk_level || "—"
+            }
           />
 
           <VerdictStat
@@ -92,10 +121,10 @@ export default function VerdictPanel({
           />
 
           <VerdictStat
-            label="CONFIDENCE"
+            label="FEATURES"
             value={
               result
-                ? `${probability.toFixed(2)}%`
+                ? String(result.features)
                 : "—"
             }
           />
@@ -103,6 +132,7 @@ export default function VerdictPanel({
         </div>
 
       </div>
+
     </section>
   );
 }
@@ -122,20 +152,41 @@ function ProbabilityBar({
   return (
     <>
       <div className="probability-bar">
+
         <div
           className="probability-fill"
           style={{
-            width: `${probability}%`,
+            width: `${Math.min(
+              Math.max(probability, 0),
+              100
+            )}%`,
           }}
         />
+
       </div>
 
       <div className="probability-scale">
-        <span>0</span>
-        <span>25</span>
-        <span>50</span>
-        <span>75</span>
-        <span>100</span>
+
+        <span>
+          0
+        </span>
+
+        <span>
+          25
+        </span>
+
+        <span>
+          50
+        </span>
+
+        <span>
+          75
+        </span>
+
+        <span>
+          100
+        </span>
+
       </div>
     </>
   );

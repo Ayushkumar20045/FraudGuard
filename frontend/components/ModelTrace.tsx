@@ -18,6 +18,8 @@ function TraceConnector() {
 export default function ModelTrace({
   result,
 }: ModelTraceProps) {
+  const hasResult = Boolean(result);
+
   return (
     <section className="dashboard-panel trace-panel">
 
@@ -32,15 +34,15 @@ export default function ModelTrace({
         <TraceStep
           number="01"
           title="RAW INPUT"
-          value="RECEIVED"
+          value={hasResult ? "RECEIVED" : "WAITING"}
         />
 
         <TraceConnector />
 
         <TraceStep
           number="02"
-          title="FEATURE ENGINEERING"
-          value="891 FEATURES"
+          title="PREPROCESSING"
+          value={hasResult ? "COMPLETE" : "PENDING"}
         />
 
         <TraceConnector />
@@ -48,7 +50,7 @@ export default function ModelTrace({
         <TraceStep
           number="03"
           title="FEATURE VECTOR"
-          value="891 DIMENSIONS"
+          value={result ? `${result.features} DIMENSIONS` : "—"}
         />
 
         <TraceConnector />
@@ -56,7 +58,7 @@ export default function ModelTrace({
         <TraceStep
           number="04"
           title="XGBOOST"
-          value="DAY 7 CHAMPION"
+          value={result ? "DAY 7 CHAMPION" : "READY"}
         />
 
         <TraceConnector />
@@ -78,7 +80,7 @@ export default function ModelTrace({
           title="VERDICT"
           value={
             result
-              ? result.risk_level === "HIGH"
+              ? result.prediction === 1
                 ? "FRAUD"
                 : "CLEARED"
               : "PENDING"
