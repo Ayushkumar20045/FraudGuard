@@ -45,12 +45,20 @@ export default function SnapshotPanel({
 
         <SnapshotRow
           label="FEATURE SPACE"
-          value="891 DIMENSIONS"
+          value={
+            result
+              ? `${result.features} DIMENSIONS`
+              : "—"
+          }
         />
 
         <SnapshotRow
           label="MODEL"
-          value="XGBOOST DAY 7 CHAMPION"
+          value={
+            result
+              ? result.model
+              : "—"
+          }
         />
 
         <SnapshotRow

@@ -5,21 +5,16 @@
   --bg-deep: #040b0e;
   --panel: #08161b;
   --panel-soft: #0a1b20;
-
   --line: #15343c;
   --line-soft: #102a31;
-
   --text: #d9e5e8;
   --muted: #668088;
   --dim: #3e5c64;
-
   --cyan: #49d5e8;
   --cyan-soft: rgba(73, 213, 232, 0.16);
-
   --green: #47d69a;
   --yellow: #e8b94f;
   --red: #ff4d5a;
-
   --font-sans: "Inter", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
 }
@@ -28,8 +23,7 @@
   box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
   margin: 0;
   padding: 0;
   min-height: 100%;
@@ -39,17 +33,16 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  letter-spacing: 0.15px;
 }
-
-/* =========================================================
-   MAIN SHELL
-   ========================================================= */
 
 .fraudguard {
   min-height: 100vh;
-
-  background:
-    linear-gradient(
+  background: linear-gradient(
       rgba(73, 213, 232, 0.018) 1px,
       transparent 1px
     ),
@@ -59,15 +52,11 @@ body {
       transparent 1px
     ),
     var(--bg);
-
   background-size: 44px 44px;
-
   transition: --risk-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
 }
-
-/* =========================================================
-   RISK THEMES
-   ========================================================= */
 
 .fraudguard.low {
   --risk-color: var(--green);
@@ -89,23 +78,15 @@ body {
   --risk-glow: rgba(73, 213, 232, 0.18);
 }
 
-/* =========================================================
-   TOP BAR
-   ========================================================= */
-
 .topbar {
   height: 70px;
   width: 100%;
-
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-
   padding: 0 38px;
-
   background: rgba(4, 11, 14, 0.94);
   border-bottom: 1px solid var(--line);
-
   position: relative;
   z-index: 10;
 }
@@ -119,80 +100,67 @@ body {
 .brand-shield {
   width: 34px;
   height: 34px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   border: 1px solid var(--cyan);
   color: var(--cyan);
-
   font-size: 11px;
   font-weight: 600;
-
   background: rgba(73, 213, 232, 0.035);
 }
 
 .brand-name {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
-  letter-spacing: 3px;
+  letter-spacing: 3.5px;
   color: var(--text);
 }
 
 .brand-subtitle {
   margin-top: 4px;
-
-  font-size: 7px;
-  letter-spacing: 2px;
-
-  color: var(--muted);
+  font-size: 8px;
+  letter-spacing: 2.2px;
+  color: #78939b;
 }
 
 .navigation {
   display: flex;
   align-items: center;
   gap: 13px;
-
-  font-size: 9px;
-  letter-spacing: 1px;
-
+  font-size: 10px;
+  letter-spacing: 1.3px;
   color: var(--dim);
 }
 
 .navigation .nav-active {
   color: var(--cyan);
+  text-shadow: 0 0 10px rgba(73, 213, 232, 0.35);
 }
 
 .system-info {
   justify-self: end;
-
   display: flex;
   align-items: center;
   gap: 9px;
-
-  font-size: 8px;
+  font-size: 9px;
   letter-spacing: 1px;
-
   color: var(--muted);
 }
 
 .online-dot {
   width: 6px;
   height: 6px;
-
   border-radius: 50%;
-
   background: var(--green);
   box-shadow: 0 0 10px rgba(71, 214, 154, 0.7);
+  animation: onlinePulse 2.5s ease-in-out infinite;
 }
 
 .header-divider {
   width: 1px;
   height: 20px;
-
   margin: 0 7px;
-
   background: var(--line);
 }
 
@@ -203,49 +171,38 @@ body {
 }
 
 .model-display small {
-  font-size: 7px;
+  font-size: 8px;
   color: var(--dim);
+  letter-spacing: 1.5px;
 }
 
 .model-display strong {
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 500;
-
   color: var(--text);
+  letter-spacing: 1px;
 }
-
-/* =========================================================
-   WORKSPACE
-   ========================================================= */
 
 .workspace {
   width: min(1350px, calc(100% - 72px));
   margin: 36px auto 0;
 }
 
-/* =========================================================
-   COMMON PANEL
-   ========================================================= */
-
-.dashboard-panel,
-.investigation-panel {
+.dashboard-panel, .investigation-panel {
   background: rgba(8, 22, 27, 0.82);
   border: 1px solid var(--line);
-
   position: relative;
+  transition: border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
 }
 
-.dashboard-panel::before,
-.investigation-panel::before {
+.dashboard-panel::before, .investigation-panel::before {
   content: "";
-
   position: absolute;
   inset: 0;
-
   pointer-events: none;
-
-  background:
-    linear-gradient(
+  background: linear-gradient(
       90deg,
       transparent,
       rgba(73, 213, 232, 0.018),
@@ -253,122 +210,98 @@ body {
     );
 }
 
-/* =========================================================
-   INVESTIGATION PANEL
-   ========================================================= */
-
 .investigation-panel {
   margin-bottom: 12px;
+  box-shadow: inset 0 1px 0 rgba(73, 213, 232, 0.025),
+    0 12px 40px rgba(0, 0, 0, 0.12);
+  min-height: 250px;
+  overflow: hidden;
 }
 
-.section-header,
-.panel-header {
+.section-header, .panel-header {
   min-height: 40px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 0 15px;
-
   border-bottom: 1px solid var(--line);
 }
 
 .section-number {
   color: var(--cyan);
-
   font-size: 8px;
   letter-spacing: 1px;
-
   margin-right: 13px;
 }
 
 .section-name {
-  font-size: 9px;
-  letter-spacing: 1.5px;
+  font-size: 10px;
+  letter-spacing: 1.7px;
   color: var(--text);
+  font-weight: 600;
 }
 
-.section-source,
-.panel-meta {
-  font-size: 7px;
-  letter-spacing: 1px;
-  color: var(--dim);
+.section-source, .panel-meta {
+  font-size: 8px;
+  letter-spacing: 1.2px;
+  color: #78939b;
 }
-
-/* =========================================================
-   LIVE TRANSACTION FORM
-   ========================================================= */
 
 .transaction-form {
   padding: 20px 18px 16px;
+  position: relative;
+  min-height: 205px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .form-grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(4, minmax(0, 1fr));
-
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px 16px;
 }
 
 .form-field {
   display: flex;
   flex-direction: column;
-
   min-width: 0;
 }
 
 .form-field label {
   margin-bottom: 7px;
-
-  font-size: 7px;
-  letter-spacing: 1.2px;
-
-  color: var(--dim);
+  font-size: 8px;
+  letter-spacing: 1.3px;
+  color: #78939b;
+  font-weight: 500;
 }
 
-.form-field input,
-.form-field select {
+.form-field input, .form-field select {
   width: 100%;
-  height: 38px;
-
+  height: 42px;
   border: 1px solid var(--line);
-
   outline: none;
-
   background: rgba(3, 11, 14, 0.8);
-
   color: var(--text);
-
   font-family: var(--font-mono);
-  font-size: 9px;
-
+  font-size: 11px;
   padding: 0 11px;
-
   border-radius: 0;
-
-  transition:
-    border-color 0.2s ease,
+  transition: border-color 0.2s ease,
     box-shadow 0.2s ease,
     background 0.2s ease;
 }
 
-.form-field input:hover,
-.form-field select:hover {
+.form-field input:hover, .form-field select:hover {
   border-color: #24515c;
+  background: rgba(73, 213, 232, 0.025);
 }
 
-.form-field input:focus,
-.form-field select:focus {
+.form-field input:focus, .form-field select:focus {
   border-color: var(--cyan);
-
   background: rgba(73, 213, 232, 0.035);
-
-  box-shadow:
-    0 0 0 1px rgba(73, 213, 232, 0.08),
-    0 0 16px rgba(73, 213, 232, 0.05);
+  box-shadow: 0 0 0 1px rgba(73, 213, 232, 0.18),
+    0 0 25px rgba(73, 213, 232, 0.08);
 }
 
 .form-field input::placeholder {
@@ -377,23 +310,14 @@ body {
 
 .form-field select {
   cursor: pointer;
-
   appearance: none;
-
-  background-image:
-    linear-gradient(45deg, transparent 50%, var(--cyan) 50%),
+  background-image: linear-gradient(45deg, transparent 50%, var(--cyan) 50%),
     linear-gradient(135deg, var(--cyan) 50%, transparent 50%);
-
-  background-position:
-    calc(100% - 14px) 15px,
+  background-position: calc(100% - 14px) 15px,
     calc(100% - 10px) 15px;
-
-  background-size:
-    4px 4px,
+  background-size: 4px 4px,
     4px 4px;
-
   background-repeat: no-repeat;
-
   padding-right: 30px;
 }
 
@@ -402,78 +326,53 @@ body {
   color: var(--text);
 }
 
-/* Remove number arrows */
-
-.form-field input[type="number"]::-webkit-inner-spin-button,
-.form-field input[type="number"]::-webkit-outer-spin-button {
+.form-field input[type="number"]::-webkit-inner-spin-button, .form-field input[type="number"]::-webkit-outer-spin-button {
   opacity: 0.35;
 }
 
-/* =========================================================
-   FORM ACTIONS
-   ========================================================= */
-
 .form-actions {
   display: flex;
-
   align-items: center;
   justify-content: space-between;
-
   margin-top: 18px;
-
   padding-top: 14px;
-
   border-top: 1px solid var(--line);
 }
 
 .form-actions > span {
-  font-size: 7px;
+  font-size: 8px;
   letter-spacing: 1px;
-
-  color: var(--dim);
+  color: #769198;
 }
 
 .form-actions .analyze-button {
   width: 190px;
 }
 
-/* =========================================================
-   ANALYZE BUTTON
-   ========================================================= */
-
 .analyze-button {
-  height: 44px;
-
+  height: 46px;
   border: 1px solid var(--cyan);
-
   background: var(--cyan);
   color: #031014;
-
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 9px;
   font-weight: 600;
-
-  letter-spacing: 1px;
-
+  letter-spacing: 1.2px;
   cursor: pointer;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 0 15px;
-
-  transition:
-    background 0.2s ease,
+  transition: background 0.2s ease,
     box-shadow 0.2s ease,
     transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .analyze-button:hover:not(:disabled) {
   background: #70dfef;
-
-  box-shadow:
-    0 0 22px rgba(73, 213, 232, 0.2);
+  box-shadow: 0 0 22px rgba(73, 213, 232, 0.2);
 }
 
 .analyze-button:active:not(:disabled) {
@@ -489,43 +388,43 @@ body {
   font-size: 14px;
 }
 
-/* =========================================================
-   LEGACY INVESTIGATION INPUT
-   ========================================================= */
-
 .investigation-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 195px;
-
   gap: 10px;
-
-  padding: 12px 13px 8px;
+  padding: 20px 18px 12px;
+  min-height: 112px;
 }
 
 .transaction-input {
-  height: 50px;
-
+  height: 48px;
   display: flex;
   align-items: center;
-
   border: 1px solid var(--line);
-
-  background: rgba(3, 11, 14, 0.75);
-
-  padding: 0 16px;
-
-  transition: border-color 0.2s ease;
+  background: linear-gradient(
+      90deg,
+      rgba(73, 213, 232, 0.025),
+      rgba(3, 11, 14, 0.85)
+    );
+  padding: 0 14px;
+  transition: border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
 }
 
 .transaction-input:focus-within {
   border-color: var(--cyan);
-
-  box-shadow:
-    0 0 0 1px rgba(73, 213, 232, 0.1);
+  box-shadow: 0 0 0 1px rgba(73, 213, 232, 0.08),
+    0 0 22px rgba(73, 213, 232, 0.06);
+  background: linear-gradient(
+      90deg,
+      rgba(73, 213, 232, 0.045),
+      rgba(3, 11, 14, 0.9)
+    );
 }
 
 .tx-label {
-  font-size: 9px;
+  font-size: 10px;
   color: var(--cyan);
   letter-spacing: 1px;
 }
@@ -533,26 +432,21 @@ body {
 .input-divider {
   width: 1px;
   height: 20px;
-
   margin: 0 15px;
-
   background: var(--line);
 }
 
 .transaction-input input {
   flex: 1;
-
   min-width: 0;
-
   border: 0;
   outline: 0;
-
   background: transparent;
-
   color: var(--text);
-
   font-family: var(--font-mono);
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
 }
 
 .transaction-input input::placeholder {
@@ -560,7 +454,7 @@ body {
 }
 
 .input-type {
-  font-size: 7px;
+  font-size: 8px;
   color: var(--dim);
   letter-spacing: 1px;
 }
@@ -568,61 +462,49 @@ body {
 .query-footer {
   display: flex;
   justify-content: space-between;
-
   padding: 0 14px 10px;
-
-  font-size: 7px;
+  font-size: 8px;
   letter-spacing: 0.5px;
-
   color: var(--dim);
+  padding-top: 3px;
 }
 
 .api-error {
   margin: 0 13px 12px;
-
   padding: 9px 12px;
-
   border: 1px solid rgba(255, 77, 90, 0.4);
-
   background: rgba(255, 77, 90, 0.06);
-
   color: var(--red);
-
-  font-size: 8px;
-
+  font-size: 10px;
   display: flex;
   gap: 9px;
   align-items: center;
 }
 
 .api-error span {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
 }
 
-/* =========================================================
-   ANALYSIS GRID
-   ========================================================= */
-
 .analysis-grid {
   display: grid;
-
-  grid-template-columns:
-    minmax(220px, 0.8fr)
+  grid-template-columns: minmax(220px, 0.8fr)
     minmax(390px, 1.35fr)
     minmax(420px, 1.5fr);
-
   gap: 10px;
-
   align-items: stretch;
 }
 
 .dashboard-panel {
   min-width: 0;
+  transition: border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .panel-header {
   height: 40px;
+  background: rgba(73, 213, 232, 0.018);
 }
 
 .panel-header > div {
@@ -630,54 +512,44 @@ body {
   align-items: center;
 }
 
-.snapshot-panel,
-.verdict-panel,
-.evidence-panel {
+.snapshot-panel, .verdict-panel, .evidence-panel {
   min-height: 348px;
 }
 
-/* =========================================================
-   SNAPSHOT
-   ========================================================= */
-
 .snapshot-content {
-  padding: 22px 20px;
+  padding: 24px 20px;
 }
 
 .transaction-id-block {
   padding-bottom: 21px;
-
   border-bottom: 1px solid var(--line);
 }
 
 .data-label {
   display: block;
-
-  font-size: 7px;
-  letter-spacing: 1.5px;
-
-  color: var(--dim);
+  font-size: 8px;
+  letter-spacing: 1.8px;
+  color: #78939b;
+  font-weight: 500;
 }
 
 .large-id {
   margin-top: 10px;
-
-  font-size: 27px;
-  font-weight: 400;
-
-  letter-spacing: -1px;
-
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: -1.5px;
   color: var(--text);
+  text-shadow: 0 0 15px rgba(217, 229, 232, 0.08);
 }
 
 .snapshot-row {
-  min-height: 52px;
-
+  min-height: 56px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   border-bottom: 1px solid var(--line-soft);
+  transition: background 0.2s ease,
+    padding 0.2s ease;
 }
 
 .snapshot-row:last-child {
@@ -685,139 +557,117 @@ body {
 }
 
 .snapshot-row > span:last-child {
-  font-size: 9px;
+  font-size: 10px;
   color: var(--text);
-
   text-align: right;
+  font-weight: 500;
 }
 
 .snapshot-row .status-value {
   color: var(--green);
 }
 
-/* =========================================================
-   VERDICT
-   ========================================================= */
-
 .verdict-content {
-  padding: 21px 20px;
+  padding: 23px 20px;
 }
 
 .probability {
   margin-top: 8px;
-
   font-family: var(--font-mono);
-
-  font-size: 59px;
+  font-size: 66px;
   line-height: 1;
-
-  letter-spacing: -4px;
-
+  letter-spacing: -5px;
   color: var(--risk-color);
-
-  text-shadow:
-    0 0 25px var(--risk-glow);
+  text-shadow: 0 0 20px var(--risk-glow),
+    0 0 45px rgba(71, 214, 154, 0.08);
+  font-weight: 400;
+  position: relative;
 }
 
 .probability span {
-  font-size: 15px;
+  font-size: 17px;
   letter-spacing: 0;
-
   margin-left: 4px;
 }
 
 .probability-bar {
   width: 100%;
-  height: 4px;
-
-  margin-top: 22px;
-
-  background: #14272d;
-
+  height: 6px;
+  margin-top: 24px;
+  background: #071419;
   overflow: hidden;
+  border: 1px solid #17343b;
 }
 
 .probability-fill {
   height: 100%;
-
   background: var(--risk-color);
-
-  box-shadow:
-    0 0 14px var(--risk-glow);
-
+  box-shadow: 0 0 14px var(--risk-glow);
   transition: width 0.5s ease;
+  position: relative;
 }
 
 .probability-scale {
   display: flex;
   justify-content: space-between;
-
   margin-top: 6px;
-
-  font-size: 6px;
+  font-size: 7px;
   color: var(--dim);
 }
 
 .verdict-box {
   margin-top: 22px;
-
-  min-height: 61px;
-
+  min-height: 68px;
   display: flex;
   align-items: center;
-
   gap: 13px;
-
   padding: 11px;
-
   border: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+      90deg,
+      rgba(71, 214, 154, 0.025),
+      transparent 70%
+    );
 }
 
 .verdict-icon {
-  width: 32px;
-  height: 32px;
-
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-
   border: 1px solid var(--risk-color);
-
   color: var(--risk-color);
-
-  font-size: 14px;
-
-  box-shadow:
-    0 0 15px var(--risk-glow);
+  font-size: 15px;
+  box-shadow: 0 0 15px var(--risk-glow);
+  animation: verdictPulse 3s ease-in-out infinite;
 }
 
 .verdict-box strong {
   display: block;
-
   margin-top: 5px;
-
-  font-size: 10px;
-  letter-spacing: 1px;
-
+  font-size: 11px;
+  letter-spacing: 1.2px;
   color: var(--risk-color);
+  font-weight: 600;
 }
 
 .verdict-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-
   margin-top: 16px;
-
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
+  background: rgba(3, 11, 14, 0.25);
 }
 
 .verdict-stat {
-  min-height: 55px;
-
-  padding: 11px;
-
+  min-height: 60px;
+  padding: 12px;
   border-right: 1px solid var(--line);
+  transition: background 0.2s ease;
 }
 
 .verdict-stat:last-child {
@@ -826,71 +676,65 @@ body {
 
 .verdict-stat strong {
   display: block;
-
   margin-top: 7px;
-
-  font-size: 9px;
-
+  font-size: 10px;
   color: var(--text);
+  font-weight: 600;
 }
-
-/* =========================================================
-   RISK EVIDENCE
-   ========================================================= */
 
 .evidence-content {
   height: calc(100% - 40px);
-
   display: flex;
   flex-direction: column;
 }
 
 .evidence-radar {
   position: relative;
-
   flex: 1;
-
-  min-height: 280px;
-
+  min-height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: radial-gradient(
+      circle at center,
+      rgba(71, 214, 154, 0.035),
+      transparent 48%
+    );
+  overflow: hidden;
 }
 
 .radar-ring {
   position: absolute;
-
   border: 1px solid var(--risk-color);
-
   border-radius: 50%;
-
-  opacity: 0.15;
-
-  box-shadow:
-    0 0 18px var(--risk-glow);
+  opacity: 0.22;
+  box-shadow: 0 0 18px var(--risk-glow);
+  animation: radarPulse 4s ease-in-out infinite;
+  transition: opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .ring-one {
-  width: 112px;
-  height: 112px;
+  width: 118px;
+  height: 118px;
 }
 
 .ring-two {
-  width: 172px;
-  height: 172px;
+  width: 182px;
+  height: 182px;
+  animation-delay: 0.5s;
 }
 
 .ring-three {
-  width: 232px;
-  height: 232px;
+  width: 246px;
+  height: 246px;
+  animation-delay: 1s;
 }
 
 .radar-cross {
   position: absolute;
-
   background: var(--risk-color);
-
-  opacity: 0.1;
+  opacity: 0.15;
 }
 
 .radar-cross.horizontal {
@@ -905,107 +749,99 @@ body {
 
 .evidence-core {
   position: absolute;
-
-  width: 86px;
-  height: 86px;
-
+  width: 94px;
+  height: 94px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   border: 1px solid var(--risk-color);
-
-  background: rgba(5, 15, 19, 0.9);
-
-  box-shadow:
-    0 0 20px var(--risk-glow),
-    inset 0 0 20px var(--risk-glow);
+  background: radial-gradient(
+      circle,
+      rgba(71, 214, 154, 0.06),
+      rgba(5, 15, 19, 0.96) 70%
+    );
+  box-shadow: 0 0 25px var(--risk-glow),
+    inset 0 0 25px var(--risk-glow);
+  animation: corePulse 3s ease-in-out infinite;
+  z-index: 4;
+  transition: box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
 .evidence-core span {
-  font-size: 7px;
+  font-size: 8px;
   color: var(--dim);
 }
 
 .evidence-core strong {
   margin: 4px 0;
-
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text);
+  font-weight: 600;
 }
 
 .evidence-core small {
-  font-size: 6px;
+  font-size: 7px;
   color: var(--risk-color);
+  letter-spacing: 0.8px;
 }
 
 .evidence-node {
   position: absolute;
-
   width: 100px;
-
   display: flex;
   align-items: center;
-
   z-index: 3;
+  transition: transform 0.25s ease,
+    filter 0.25s ease;
 }
 
 .evidence-node .node-circle {
-  width: 8px;
-  height: 8px;
-
+  width: 9px;
+  height: 9px;
   border: 1px solid var(--risk-color);
-
   background: var(--bg);
-
-  box-shadow:
-    0 0 9px var(--risk-glow);
-
+  box-shadow: 0 0 9px var(--risk-glow);
   flex-shrink: 0;
+  transition: transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .evidence-node .node-circle span {
   display: block;
-
   width: 3px;
   height: 3px;
-
   margin: 1.5px;
-
   background: var(--risk-color);
-
-  box-shadow:
-    0 0 6px var(--risk-color);
+  box-shadow: 0 0 6px var(--risk-color);
 }
 
 .node-label {
   display: flex;
   flex-direction: column;
-
   margin-left: 7px;
 }
 
 .node-label strong {
-  font-size: 7px;
-  letter-spacing: 1px;
-
+  font-size: 8px;
+  letter-spacing: 1.2px;
   color: var(--text);
+  font-weight: 600;
+  text-shadow: 0 0 8px rgba(217, 229, 232, 0.12);
 }
 
 .node-label small {
   margin-top: 3px;
-
-  font-size: 6px;
+  font-size: 7px;
   color: var(--risk-color);
+  letter-spacing: 0.8px;
 }
 
 .evidence-node.top {
   top: 29px;
   left: 50%;
-
   transform: translateX(-50%);
-
   flex-direction: column;
 }
 
@@ -1017,16 +853,13 @@ body {
 .evidence-node.right {
   top: 50%;
   right: 30px;
-
   transform: translateY(-50%);
 }
 
 .evidence-node.bottom {
   bottom: 28px;
   left: 50%;
-
   transform: translateX(-50%);
-
   flex-direction: column;
 }
 
@@ -1039,9 +872,7 @@ body {
 .evidence-node.left {
   top: 50%;
   left: 30px;
-
   transform: translateY(-50%);
-
   flex-direction: row-reverse;
 }
 
@@ -1052,16 +883,12 @@ body {
 
 .risk-legend {
   height: 38px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   gap: 20px;
-
   border-top: 1px solid var(--line);
-
-  font-size: 6px;
+  font-size: 7px;
   letter-spacing: 0.5px;
 }
 
@@ -1081,145 +908,135 @@ body {
   color: var(--dim);
 }
 
-/* =========================================================
-   MODEL TRACE
-   ========================================================= */
-
 .trace-panel {
   margin-top: 10px;
-  min-height: 170px;
+  min-height: 185px;
+  overflow: hidden;
 }
 
 .trace {
-  min-height: 128px;
-
-  padding: 25px 23px;
-
+  min-height: 145px;
+  padding: 30px 42px;
   display: flex;
   align-items: center;
+  gap: 0;
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    rgba(73, 213, 232, 0.018),
+    transparent 20%,
+    transparent 80%,
+    rgba(73, 213, 232, 0.018)
+  );
 }
 
 .trace-step {
   flex: 1;
-
   display: flex;
   align-items: center;
-
   min-width: 0;
+  transition: transform 0.2s ease;
+  position: relative;
+  padding: 12px 12px;
+  border: 1px solid transparent;
+}
+
+.trace-connector {
+  width: 58px;
+  flex-shrink: 0;
+  position: relative;
 }
 
 .trace-number {
-  width: 29px;
-  height: 29px;
-
+  width: 32px;
+  height: 32px;
   flex-shrink: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   margin-right: 9px;
-
   border: 1px solid var(--line);
-
   color: var(--cyan);
-
-  font-size: 7px;
+  font-size: 8px;
+  background: rgba(3, 11, 14, 0.8);
+  transition: border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .trace-step strong {
   display: block;
-
-  font-size: 7px;
-  letter-spacing: 0.7px;
-
+  font-size: 8px;
+  letter-spacing: 0.9px;
   color: var(--text);
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .trace-step span {
   display: block;
-
-  margin-top: 4px;
-
-  font-size: 6px;
-
-  color: var(--dim);
+  margin-top: 5px;
+  font-size: 7px;
+  color: #6d858d;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
 }
 
 .trace-final .trace-number {
   border-color: var(--risk-color);
   color: var(--risk-color);
-
-  box-shadow:
-    0 0 12px var(--risk-glow);
+  box-shadow: 0 0 12px var(--risk-glow);
+  background: rgba(71, 214, 154, 0.025);
 }
 
 .trace-final strong {
   color: var(--risk-color);
+  text-shadow: 0 0 12px var(--risk-glow);
 }
 
 .trace-connector {
-  width: 30px;
-
+  width: 42px;
   flex-shrink: 0;
-
   position: relative;
 }
 
 .trace-connector::before {
   content: "";
-
   position: absolute;
-
   left: 0;
   right: 0;
-
   top: 50%;
-
   height: 1px;
-
-  background: var(--line);
+  background: linear-gradient(
+    90deg,
+    var(--line),
+    #24515c
+  );
 }
 
 .trace-connector::after {
-  content: "›";
-
+  content: "\2192";
   position: absolute;
-
   right: -2px;
   top: 50%;
-
   transform: translateY(-57%);
-
-  color: var(--dim);
-
-  font-size: 13px;
+  color: var(--cyan);
+  font-size: 15px;
+  opacity: 0.5;
 }
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
 
 .footer {
   width: min(1350px, calc(100% - 72px));
-
   margin: 17px auto 25px;
-
   padding-top: 13px;
-
   border-top: 1px solid var(--line);
-
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-
-  font-size: 6px;
+  font-size: 8px;
   letter-spacing: 1px;
-
-  color: var(--dim);
+  color: #668088;
 }
 
-.footer span:nth-child(2),
-.footer span:nth-child(3) {
+.footer span:nth-child(2), .footer span:nth-child(3) {
   text-align: center;
 }
 
@@ -1231,10 +1048,6 @@ body {
   color: var(--green);
   font-weight: 400;
 }
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
 
 @media (max-width: 1100px) {
   .topbar {
@@ -1261,9 +1074,7 @@ body {
 @media (max-width: 760px) {
   .topbar {
     height: auto;
-
     min-height: 70px;
-
     padding: 14px 18px;
   }
 
@@ -1271,8 +1082,7 @@ body {
     display: none;
   }
 
-  .workspace,
-  .footer {
+  .workspace, .footer {
     width: calc(100% - 28px);
   }
 
@@ -1306,9 +1116,7 @@ body {
     grid-column: auto;
   }
 
-  .snapshot-panel,
-  .verdict-panel,
-  .evidence-panel {
+  .snapshot-panel, .verdict-panel, .evidence-panel {
     min-height: auto;
   }
 
@@ -1323,640 +1131,144 @@ body {
 
   .footer {
     grid-template-columns: 1fr 1fr;
-
     gap: 10px;
   }
 
-  .footer span:nth-child(2),
-  .footer span:nth-child(3),
-  .footer span:last-child {
+  .footer span:nth-child(2), .footer span:nth-child(3), .footer span:last-child {
     text-align: left;
   }
 }
 
-/* =========================================================
-   FRAUDGUARD UI POLISH
-   Desktop readability + intelligence dashboard effects
-   ========================================================= */
-
-/* ---------------------------------------------------------
-   GLOBAL TYPOGRAPHY
-   --------------------------------------------------------- */
-
-body {
-  font-size: 13px;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-.brand-name {
-  font-size: 14px;
-}
-
-.brand-subtitle {
-  font-size: 8px;
-}
-
-.navigation {
-  font-size: 10px;
-}
-
-.system-info {
-  font-size: 9px;
-}
-
-.model-display small {
-  font-size: 8px;
-}
-
-.model-display strong {
-  font-size: 10px;
-}
-
-
-/* ---------------------------------------------------------
-   PANEL HEADERS
-   --------------------------------------------------------- */
-
-.panel-header,
-.section-header {
+.panel-header, .section-header {
   min-height: 44px;
 }
 
-.section-number,
-.panel-header .section-number {
+.section-number, .panel-header .section-number {
   font-size: 9px;
   font-weight: 600;
 }
 
-.section-name {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 1.8px;
+.dashboard-panel:hover, .investigation-panel:hover {
+  border-color: #1d4650;
+  box-shadow: 0 0 30px rgba(73, 213, 232, 0.025),
+    inset 0 0 30px rgba(73, 213, 232, 0.012);
 }
 
-.section-source,
-.panel-meta {
-  font-size: 8px;
-  letter-spacing: 1.2px;
-}
-
-
-/* ---------------------------------------------------------
-   FORM
-   --------------------------------------------------------- */
-
-.form-field label {
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: 1.3px;
-}
-
-.form-field input,
-.form-field select {
-  height: 42px;
-  font-size: 11px;
-}
-
-.form-actions > span {
-  font-size: 8px;
-}
-
-.analyze-button {
-  height: 46px;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 1.2px;
-}
-
-
-/* ---------------------------------------------------------
-   TRANSACTION ID
-   --------------------------------------------------------- */
-
-.tx-label {
-  font-size: 10px;
-}
-
-.transaction-input input {
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.input-type {
-  font-size: 8px;
-}
-
-.query-footer {
-  font-size: 8px;
-}
-
-
-/* ---------------------------------------------------------
-   DATA LABELS
-   --------------------------------------------------------- */
-
-.data-label {
-  font-size: 8px;
-  font-weight: 500;
-  letter-spacing: 1.6px;
-}
-
-
-/* ---------------------------------------------------------
-   SNAPSHOT PANEL
-   --------------------------------------------------------- */
-
-.large-id {
-  font-size: 31px;
-  font-weight: 500;
-  letter-spacing: -1.5px;
-}
-
-.snapshot-row {
-  min-height: 58px;
-}
-
-.snapshot-row > span:last-child {
-  font-size: 10px;
-  font-weight: 500;
-}
-
-
-/* ---------------------------------------------------------
-   VERDICT PANEL
-   --------------------------------------------------------- */
-
-.probability {
-  font-size: 67px;
-  font-weight: 500;
-  letter-spacing: -4px;
-}
-
-.probability span {
-  font-size: 18px;
-}
-
-.probability-scale {
-  font-size: 8px;
-}
-
-.verdict-box {
-  min-height: 68px;
-}
-
-.verdict-icon {
-  width: 36px;
-  height: 36px;
-  font-size: 15px;
-}
-
-.verdict-box strong {
-  font-size: 11px;
-  font-weight: 600;
-}
-
-.verdict-stat {
-  min-height: 62px;
-  padding: 12px;
-}
-
-.verdict-stat strong {
-  font-size: 10px;
-  font-weight: 500;
-}
-
-
-/* ---------------------------------------------------------
-   RISK EVIDENCE
-   --------------------------------------------------------- */
-
-.evidence-radar {
-  min-height: 300px;
-}
-
-.evidence-core {
-  width: 96px;
-  height: 96px;
-}
-
-.evidence-core span {
-  font-size: 8px;
-}
-
-.evidence-core strong {
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.evidence-core small {
-  font-size: 7px;
-  letter-spacing: 0.8px;
-}
-
-.node-label strong {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 1.2px;
-}
-
-.node-label small {
-  font-size: 7px;
-  letter-spacing: 0.5px;
-}
-
-.risk-legend {
-  font-size: 7px;
-}
-
-
-/* ---------------------------------------------------------
-   MODEL TRACE
-   --------------------------------------------------------- */
-
-.trace-step strong {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.8px;
-}
-
-.trace-step span {
-  font-size: 8px;
-}
-
-.trace-number {
-  width: 32px;
-  height: 32px;
-  font-size: 8px;
-}
-
-
-/* ---------------------------------------------------------
-   API ERROR
-   --------------------------------------------------------- */
-
-.api-error {
-  font-size: 10px;
-}
-
-.api-error span {
-  font-size: 13px;
-}
-
-
-/* =========================================================
-   VISUAL POLISH
-   ========================================================= */
-
-
-/* ---------------------------------------------------------
-   PANEL HOVER
-   --------------------------------------------------------- */
-
-.dashboard-panel,
-.investigation-panel {
-  transition:
-    border-color 0.25s ease,
-    box-shadow 0.25s ease,
-    transform 0.25s ease;
-}
-
-.dashboard-panel:hover,
-.investigation-panel:hover {
-  border-color: #1c4650;
-
-  box-shadow:
-    0 0 0 1px rgba(73, 213, 232, 0.025),
-    0 12px 40px rgba(0, 0, 0, 0.18);
-}
-
-
-/* ---------------------------------------------------------
-   PANEL TOP GLOW
-   --------------------------------------------------------- */
-
-.dashboard-panel::after,
-.investigation-panel::after {
+.dashboard-panel::after, .investigation-panel::after {
   content: "";
-
   position: absolute;
-
   top: -1px;
   left: 12px;
   right: 12px;
-
   height: 1px;
-
-  background:
-    linear-gradient(
+  background: linear-gradient(
       90deg,
       transparent,
       rgba(73, 213, 232, 0.45),
       transparent
     );
-
   opacity: 0.45;
-
   pointer-events: none;
-}
-
-
-/* ---------------------------------------------------------
-   INVESTIGATION PANEL
-   --------------------------------------------------------- */
-
-.investigation-panel {
-  box-shadow:
-    inset 0 1px 0 rgba(73, 213, 232, 0.025);
-}
-
-
-/* ---------------------------------------------------------
-   INPUT FOCUS
-   --------------------------------------------------------- */
-
-.form-field input:focus,
-.form-field select:focus {
-  box-shadow:
-    0 0 0 1px rgba(73, 213, 232, 0.12),
-    0 0 25px rgba(73, 213, 232, 0.08),
-    inset 0 0 18px rgba(73, 213, 232, 0.025);
-}
-
-
-/* ---------------------------------------------------------
-   ANALYZE BUTTON
-   --------------------------------------------------------- */
-
-.analyze-button {
-  position: relative;
-  overflow: hidden;
 }
 
 .analyze-button::before {
   content: "";
-
   position: absolute;
-
   top: 0;
-  left: -120%;
-
-  width: 80%;
+  left: -100%;
+  width: 100%;
   height: 100%;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.18),
-      transparent
-    );
-
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.18),
+    transparent
+  );
   transform: skewX(-20deg);
-
-  transition: left 0.6s ease;
+  transition: left 0.5s ease;
 }
 
 .analyze-button:hover::before {
-  left: 140%;
-}
-
-
-/* ---------------------------------------------------------
-   ONLINE STATUS
-   --------------------------------------------------------- */
-
-.online-dot {
-  animation: onlinePulse 2.5s ease-in-out infinite;
+  left: 100%;
 }
 
 @keyframes onlinePulse {
-  0%,
-  100% {
-    opacity: 0.65;
-    box-shadow: 0 0 6px rgba(71, 214, 154, 0.4);
-  }
 
-  50% {
-    opacity: 1;
-    box-shadow:
-      0 0 12px rgba(71, 214, 154, 0.8),
-      0 0 20px rgba(71, 214, 154, 0.25);
-  }
-}
-
-
-/* ---------------------------------------------------------
-   RISK RADAR
-   --------------------------------------------------------- */
-
-.radar-ring {
-  animation: radarPulse 4s ease-in-out infinite;
-}
-
-.ring-two {
-  animation-delay: 0.5s;
-}
-
-.ring-three {
-  animation-delay: 1s;
 }
 
 @keyframes radarPulse {
-  0%,
-  100% {
-    opacity: 0.11;
-  }
 
-  50% {
-    opacity: 0.22;
-  }
-}
-
-
-/* ---------------------------------------------------------
-   RADAR CORE
-   --------------------------------------------------------- */
-
-.evidence-core {
-  animation: corePulse 3s ease-in-out infinite;
 }
 
 @keyframes corePulse {
-  0%,
-  100% {
-    box-shadow:
-      0 0 15px var(--risk-glow),
-      inset 0 0 15px var(--risk-glow);
-  }
 
-  50% {
-    box-shadow:
-      0 0 28px var(--risk-glow),
-      inset 0 0 24px var(--risk-glow);
-  }
-}
-
-
-/* ---------------------------------------------------------
-   RISK NODES
-   --------------------------------------------------------- */
-
-.evidence-node .node-circle {
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
 }
 
 .evidence-node:hover .node-circle {
-  transform: scale(1.35);
-
-  box-shadow:
-    0 0 12px var(--risk-glow),
-    0 0 22px var(--risk-glow);
-}
-
-
-/* ---------------------------------------------------------
-   PROBABILITY BAR
-   --------------------------------------------------------- */
-
-.probability-bar {
-  height: 5px;
-  border: 1px solid rgba(73, 213, 232, 0.05);
-}
-
-.probability-fill {
-  position: relative;
+  transform: scale(1.5);
+  box-shadow: 0 0 15px var(--risk-color),
+    0 0 30px var(--risk-glow);
 }
 
 .probability-fill::after {
   content: "";
-
   position: absolute;
-
   right: 0;
-  top: 0;
-
-  width: 18px;
-  height: 100%;
-
-  background: rgba(255, 255, 255, 0.35);
-
+  top: -3px;
+  width: 2px;
+  height: 10px;
+  background: var(--risk-color);
   filter: blur(4px);
-
   animation: scoreScan 2s ease-in-out infinite;
+  box-shadow: 0 0 8px var(--risk-color);
 }
 
 @keyframes scoreScan {
-  0%,
-  100% {
-    opacity: 0.15;
-  }
 
-  50% {
-    opacity: 0.65;
-  }
-}
-
-
-/* ---------------------------------------------------------
-   VERDICT GLOW
-   --------------------------------------------------------- */
-
-.verdict-icon {
-  animation: verdictPulse 3s ease-in-out infinite;
 }
 
 @keyframes verdictPulse {
-  0%,
-  100% {
-    box-shadow:
-      0 0 8px var(--risk-glow);
-  }
 
-  50% {
-    box-shadow:
-      0 0 20px var(--risk-glow);
-  }
-}
-
-
-/* ---------------------------------------------------------
-   MODEL TRACE
-   --------------------------------------------------------- */
-
-.trace-step {
-  transition:
-    transform 0.2s ease,
-    opacity 0.2s ease;
 }
 
 .trace-step:hover {
   transform: translateY(-2px);
+  border-color: var(--line);
+  background: linear-gradient(
+      135deg,
+      rgba(73, 213, 232, 0.025),
+      transparent
+    );
 }
 
 .trace-step:hover .trace-number {
   border-color: var(--cyan);
-
-  box-shadow:
-    0 0 12px rgba(73, 213, 232, 0.12);
-}
-
-
-/* ---------------------------------------------------------
-   BACKGROUND TECH GRID
-   --------------------------------------------------------- */
-
-.fraudguard {
-  position: relative;
-  overflow: hidden;
+  box-shadow: 0 0 12px rgba(73, 213, 232, 0.12);
 }
 
 .fraudguard::before {
   content: "";
-
   position: fixed;
-
   inset: 0;
-
   pointer-events: none;
-
-  background:
-    linear-gradient(
+  background: linear-gradient(
       rgba(73, 213, 232, 0.012) 50%,
       transparent 50%
     );
-
   background-size: 100% 4px;
-
   opacity: 0.25;
-
   z-index: 0;
 }
 
-.topbar,
-.workspace,
-.footer {
+.topbar, .workspace, .footer {
   position: relative;
   z-index: 1;
 }
-
-
-/* ---------------------------------------------------------
-   SELECTION
-   --------------------------------------------------------- */
 
 ::selection {
   background: rgba(73, 213, 232, 0.25);
   color: #ffffff;
 }
-
-
-/* ---------------------------------------------------------
-   SCROLLBAR
-   --------------------------------------------------------- */
 
 ::-webkit-scrollbar {
   width: 7px;
@@ -1975,181 +1287,42 @@ body {
   background: #24515c;
 }
 
-
-/* =========================================================
-   LARGE DESKTOP
-   ========================================================= */
-
 @media (min-width: 1400px) {
   .workspace {
     width: min(1450px, calc(100% - 90px));
+    margin-top: 42px;
   }
 
   .footer {
     width: min(1450px, calc(100% - 90px));
   }
 
-  .workspace {
-    margin-top: 42px;
-  }
-
-  .panel-header,
-  .section-header {
+  .panel-header, .section-header {
     min-height: 46px;
   }
 
-  .snapshot-panel,
-  .verdict-panel,
-  .evidence-panel {
+  .snapshot-panel, .verdict-panel, .evidence-panel {
     min-height: 370px;
   }
 }
 
-
-/* =========================================================
-   ACCESSIBILITY / REDUCED MOTION
-   ========================================================= */
-
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }
 
-/* =========================================================
-   UI V2 — MODEL TRACE
-   ========================================================= */
-
-.trace-panel {
-  min-height: 185px;
-}
-
-.trace {
-  min-height: 140px;
-  padding: 28px 24px;
-  gap: 0;
-}
-
-.trace-step {
-  position: relative;
-
-  padding: 12px 10px;
-
-  border: 1px solid transparent;
-
-  transition:
-    border-color 0.2s ease,
-    background 0.2s ease,
-    transform 0.2s ease;
-}
-
-.trace-step:hover {
-  border-color: var(--line);
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(73, 213, 232, 0.025),
-      transparent
-    );
-
-  transform: translateY(-2px);
-}
-
-.trace-number {
-  width: 34px;
-  height: 34px;
-
-  margin-right: 11px;
-
-  font-size: 8px;
-
-  background: rgba(3, 11, 14, 0.7);
-
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.trace-step:hover .trace-number {
-  border-color: var(--cyan);
-
-  box-shadow:
-    0 0 15px rgba(73, 213, 232, 0.12);
-}
-
-.trace-step strong {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
-.trace-step span {
-  margin-top: 5px;
-
-  font-size: 8px;
-  letter-spacing: 0.4px;
-
-  color: var(--dim);
-}
-
 .trace-final {
   border-color: rgba(71, 214, 154, 0.12);
+  filter: drop-shadow(
+    0 0 8px var(--risk-glow)
+  );
 }
-
-.trace-final .trace-number {
-  background: rgba(71, 214, 154, 0.025);
-}
-
-.trace-final strong {
-  text-shadow:
-    0 0 12px var(--risk-glow);
-}
-
-.trace-connector {
-  width: 42px;
-}
-
-.trace-connector::before {
-  background:
-    linear-gradient(
-      90deg,
-      var(--line),
-      rgba(73, 213, 232, 0.35),
-      var(--line)
-    );
-}
-
-.trace-connector::after {
-  font-size: 16px;
-  color: var(--cyan);
-  opacity: 0.5;
-}
-/* =========================================================
-   UI V2 — MODEL SIGNALS
-   ========================================================= */
 
 .evidence-panel {
   overflow: hidden;
-}
-
-.evidence-radar {
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(71, 214, 154, 0.025),
-      transparent 58%
-    );
-}
-
-.radar-ring {
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
 }
 
 .evidence-radar:hover .ring-one {
@@ -2164,64 +1337,29 @@ body {
   opacity: 0.14;
 }
 
-.evidence-core {
-  z-index: 4;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(71, 214, 154, 0.06),
-      rgba(5, 15, 19, 0.96) 70%
-    );
-}
-
-.evidence-core strong {
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.evidence-node {
-  transition:
-    transform 0.25s ease,
-    filter 0.25s ease;
-}
-
 .evidence-node:hover {
-  filter:
-    drop-shadow(0 0 7px var(--risk-glow));
+  filter: drop-shadow(0 0 7px var(--risk-glow));
 }
 
 .evidence-node.top:hover {
-  transform:
-    translateX(-50%)
+  transform: translateX(-50%)
     translateY(-2px);
 }
 
 .evidence-node.bottom:hover {
-  transform:
-    translateX(-50%)
+  transform: translateX(-50%)
     translateY(2px);
 }
 
 .evidence-node.left:hover {
-  transform:
-    translateY(-50%)
+  transform: translateY(-50%)
     translateX(-2px);
 }
 
 .evidence-node.right:hover {
-  transform:
-    translateY(-50%)
+  transform: translateY(-50%)
     translateX(2px);
 }
-
-.node-label strong {
-  text-shadow:
-    0 0 8px rgba(217, 229, 232, 0.12);
-}
-/* =========================================================
-   UI V2 — VERDICT
-   ========================================================= */
 
 .verdict-panel {
   overflow: hidden;
@@ -2233,123 +1371,37 @@ body {
 
 .probability-section::after {
   content: "MODEL CONFIDENCE";
-
   position: absolute;
-
   top: 0;
   right: 0;
-
   font-size: 7px;
   letter-spacing: 1px;
-
   color: var(--dim);
-}
-
-.probability {
-  position: relative;
-
-  text-shadow:
-    0 0 20px var(--risk-glow),
-    0 0 45px rgba(71, 214, 154, 0.08);
-}
-
-.verdict-box {
-  position: relative;
-  overflow: hidden;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(71, 214, 154, 0.025),
-      transparent 65%
-    );
 }
 
 .verdict-box::after {
   content: "";
-
   position: absolute;
-
   top: 0;
   bottom: 0;
-
   left: 0;
-
   width: 2px;
-
   background: var(--risk-color);
-
-  box-shadow:
-    0 0 12px var(--risk-glow);
+  box-shadow: 0 0 12px var(--risk-glow);
 }
 
 .verdict-message strong {
   letter-spacing: 1.3px;
 }
 
-.verdict-stats {
-  background: rgba(3, 11, 14, 0.25);
-}
-
-.verdict-stat {
-  transition:
-    background 0.2s ease;
-}
-
 .verdict-stat:hover {
   background: rgba(73, 213, 232, 0.025);
 }
 
-.verdict-stat strong {
-  font-size: 10px;
-  font-weight: 600;
-}
-/* =========================================================
-   UI V2 — INVESTIGATION PANEL
-   ========================================================= */
-
-.investigation-panel {
-  min-height: 250px;
-}
-
-.investigation-row {
-  min-height: 112px;
-
-  padding: 20px 18px 12px;
-}
-
-.transaction-input {
-  height: 56px;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(3, 11, 14, 0.95),
-      rgba(8, 22, 27, 0.65)
-    );
-}
-
-.transaction-input:focus-within {
-  box-shadow:
-    0 0 0 1px rgba(73, 213, 232, 0.12),
-    0 0 24px rgba(73, 213, 232, 0.05);
-}
-
-.transaction-input input {
-  font-size: 17px;
-  font-weight: 500;
-}
-
-.query-footer {
-  padding-top: 3px;
-}
-
 .investigation-panel .form-actions {
   min-height: 68px;
-
   margin-top: 8px;
   padding: 15px 18px;
-
   border-top: 1px solid var(--line);
 }
 
@@ -2360,12 +1412,6 @@ body {
 
 .investigation-panel .analyze-button {
   width: 205px;
-}/* =========================================================
-   UI V2 — LIVE ANALYSIS EFFECT
-   ========================================================= */
-
-.investigation-panel {
-  overflow: hidden;
 }
 
 .investigation-panel::after {
@@ -2373,20 +1419,10 @@ body {
 }
 
 @keyframes panelScan {
-  0% {
-    opacity: 0.15;
-    transform: translateX(-100%);
-  }
 
-  45% {
-    opacity: 0.35;
-  }
+}
 
-  100% {
-    opacity: 0.15;
-    transform: translateX(100%);
-  }
-}@media (max-width: 900px) {
+@media (max-width: 900px) {
   .trace {
     overflow-x: auto;
     justify-content: flex-start;
@@ -2397,201 +1433,13 @@ body {
     overflow-x: auto;
   }
 }
-/* =========================================================
-   UI READABILITY + POLISH
-   ========================================================= */
 
-body {
-  font-size: 14px;
-}
-
-/* ---------- HEADER ---------- */
-
-.brand-name {
-  font-size: 14px;
-}
-
-.brand-subtitle {
-  font-size: 8px;
-  color: #78939b;
-}
-
-.navigation {
-  font-size: 10px;
-}
-
-.system-info {
-  font-size: 9px;
-}
-
-.model-display small {
-  font-size: 8px;
-}
-
-.model-display strong {
-  font-size: 10px;
-}
-
-/* ---------- PANEL HEADERS ---------- */
-
-.section-number,
-.section-name,
-.panel-header {
-  font-size: 10px;
-}
-
-.section-source,
-.panel-meta {
-  font-size: 8px;
-  color: #78939b;
-}
-
-.section-name {
-  letter-spacing: 1.8px;
-}
-
-/* ---------- FORM ---------- */
-
-.form-field label {
-  font-size: 9px;
-  color: #78939b;
-}
-
-.form-field input,
-.form-field select {
-  font-size: 11px;
-  height: 42px;
-}
-
-.form-actions > span {
-  font-size: 9px;
-  color: #78939b;
-}
-
-.analyze-button {
-  font-size: 9px;
-  letter-spacing: 1.2px;
-}
-
-/* ---------- SNAPSHOT ---------- */
-
-.data-label {
-  font-size: 9px;
-  color: #78939b;
-}
-
-.large-id {
-  font-size: 30px;
-}
-
-.snapshot-row > span:last-child {
-  font-size: 10px;
-}
-
-.snapshot-row {
-  min-height: 56px;
-}
-
-/* ---------- VERDICT ---------- */
-
-.probability {
-  font-size: 64px;
-}
-
-.probability span {
-  font-size: 17px;
-}
-
-.probability-scale {
-  font-size: 8px;
-}
-
-.verdict-box strong {
-  font-size: 11px;
-}
-
-.verdict-stat strong {
+.section-number, .section-name, .panel-header {
   font-size: 10px;
 }
 
 .verdict-stat .data-label {
   font-size: 8px;
-}
-
-/* ---------- RADAR ---------- */
-
-.node-label strong {
-  font-size: 9px;
-}
-
-.node-label small {
-  font-size: 7px;
-}
-
-.evidence-core span {
-  font-size: 8px;
-}
-
-.evidence-core strong {
-  font-size: 12px;
-}
-
-.evidence-core small {
-  font-size: 7px;
-}
-
-.risk-legend {
-  font-size: 8px;
-}
-
-/* ---------- MODEL TRACE ---------- */
-
-.trace-step strong {
-  font-size: 9px;
-  letter-spacing: 0.9px;
-}
-
-.trace-step span {
-  font-size: 8px;
-  color: #78939b;
-}
-
-.trace-number {
-  font-size: 8px;
-}
-
-/* ---------- FOOTER ---------- */
-
-.footer {
-  font-size: 8px;
-  color: #668088;
-}/* =========================================================
-   INTERACTION POLISH
-   ========================================================= */
-
-.dashboard-panel,
-.investigation-panel {
-  transition:
-    border-color 0.25s ease,
-    box-shadow 0.25s ease,
-    transform 0.25s ease;
-}
-
-.dashboard-panel:hover,
-.investigation-panel:hover {
-  border-color: #1d4650;
-
-  box-shadow:
-    0 0 30px rgba(73, 213, 232, 0.025),
-    inset 0 0 30px rgba(73, 213, 232, 0.012);
-}
-
-/* Snapshot rows */
-
-.snapshot-row {
-  transition:
-    background 0.2s ease,
-    padding 0.2s ease;
 }
 
 .snapshot-row:hover {
@@ -2600,412 +1448,101 @@ body {
   padding-right: 5px;
 }
 
-/* Form */
-
-.form-field input:hover,
-.form-field select:hover {
-  background: rgba(73, 213, 232, 0.025);
-}
-
-/* Trace */
-
-.trace-step {
-  transition: transform 0.2s ease;
-}
-
-.trace-step:hover {
-  transform: translateY(-2px);
-}
-
-.trace-step:hover .trace-number {
-  border-color: var(--cyan);
-  box-shadow: 0 0 12px rgba(73, 213, 232, 0.12);
-}/* =========================================================
-   INVESTIGATION PANEL POLISH
-   ========================================================= */
-
-.investigation-panel {
-  overflow: hidden;
-}
-
-.transaction-form {
-  position: relative;
-}
-
 .transaction-form::after {
   content: "SECURE INFERENCE CHANNEL";
   position: absolute;
-
   right: 18px;
   top: 20px;
-
   font-size: 8px;
   letter-spacing: 1.5px;
-
   color: #36565f;
-
   pointer-events: none;
-}
-
-/* Input emphasis */
-
-.form-field input:focus,
-.form-field select:focus {
-  box-shadow:
-    0 0 0 1px rgba(73, 213, 232, 0.18),
-    0 0 25px rgba(73, 213, 232, 0.08);
-}
-
-/* Button */
-
-.analyze-button {
-  position: relative;
-  overflow: hidden;
-}
-
-.analyze-button::before {
-  content: "";
-
-  position: absolute;
-  top: 0;
-  left: -100%;
-
-  width: 100%;
-  height: 100%;
-
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,0.18),
-    transparent
-  );
-
-  transition: left 0.5s ease;
-}
-
-.analyze-button:hover::before {
-  left: 100%;
-}
-/* =========================================================
-   VERDICT EMPHASIS
-   ========================================================= */
-
-.verdict-panel {
-  overflow: hidden;
 }
 
 .verdict-panel::after {
   content: "LIVE MODEL OUTPUT";
-
   position: absolute;
-
+  top: auto;
+  left: auto;
   right: 18px;
   bottom: 14px;
-
+  width: auto;
+  height: auto;
+  background: none;
+  opacity: 1;
+  animation: none;
   font-size: 7px;
   letter-spacing: 1.5px;
-
   color: #28454d;
-
   pointer-events: none;
 }
 
 .fraudguard.low .verdict-panel {
-  box-shadow:
-    inset 0 1px 0 rgba(71, 214, 154, 0.08);
+  box-shadow: inset 0 1px 0 rgba(71, 214, 154, 0.08);
 }
 
 .fraudguard.medium .verdict-panel {
-  box-shadow:
-    inset 0 1px 0 rgba(232, 185, 79, 0.08);
+  box-shadow: inset 0 1px 0 rgba(232, 185, 79, 0.08);
 }
 
 .fraudguard.high .verdict-panel {
-  box-shadow:
-    inset 0 1px 0 rgba(255, 77, 90, 0.12);
-}.probability-bar {
-  height: 6px;
-  margin-top: 24px;
-
-  border: 1px solid #17343b;
-  background: #071419;
-}
-
-.probability-fill {
-  position: relative;
-}
-
-.probability-fill::after {
-  content: "";
-
-  position: absolute;
-
-  right: 0;
-  top: -3px;
-
-  width: 2px;
-  height: 10px;
-
-  background: var(--risk-color);
-
-  box-shadow:
-    0 0 8px var(--risk-color);
-}
-/* =========================================================
-   SIGNAL RADAR POLISH
-   ========================================================= */
-
-.evidence-radar {
-  overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255, 77, 90, 0.12);
 }
 
 .evidence-radar::before {
   content: "";
-
   position: absolute;
-
   width: 230px;
   height: 230px;
-
   border-radius: 50%;
-
   border: 1px dashed var(--risk-color);
-
   opacity: 0.08;
-
   animation: radarPulse 3s ease-in-out infinite;
 }
 
-@keyframes radarPulse {
-  0%,
-  100% {
-    transform: scale(0.96);
-    opacity: 0.04;
-  }
-
-  50% {
-    transform: scale(1.03);
-    opacity: 0.10;
-  }
-}
-
 .node-circle {
-  transition:
-    transform 0.2s ease,
+  transition: transform 0.2s ease,
     box-shadow 0.2s ease;
-}
-
-.evidence-node:hover .node-circle {
-  transform: scale(1.5);
-
-  box-shadow:
-    0 0 15px var(--risk-color),
-    0 0 30px var(--risk-glow);
-}
-
-.evidence-core {
-  transition:
-    box-shadow 0.3s ease,
-    transform 0.3s ease;
 }
 
 .evidence-core:hover {
   transform: scale(1.04);
-
-  box-shadow:
-    0 0 30px var(--risk-glow),
+  box-shadow: 0 0 30px var(--risk-glow),
     inset 0 0 30px var(--risk-glow);
-}
-/* =========================================================
-   MODEL TRACE POLISH
-   ========================================================= */
-
-.trace-panel {
-  overflow: hidden;
-}
-
-.trace {
-  position: relative;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(73, 213, 232, 0.018),
-      transparent 20%,
-      transparent 80%,
-      rgba(73, 213, 232, 0.018)
-    );
-}
-
-.trace-step {
-  position: relative;
-}
-
-.trace-number {
-  background: rgba(3, 11, 14, 0.8);
-}
-
-.trace-step strong {
-  white-space: nowrap;
-}
-
-.trace-step span {
-  white-space: nowrap;
-}
-
-.trace-connector::before {
-  background: linear-gradient(
-    90deg,
-    var(--line),
-    #24515c
-  );
-}
-
-.trace-final {
-  filter: drop-shadow(
-    0 0 8px var(--risk-glow)
-  );
-}
-/* =========================================================
-   SECURITY SCAN EFFECT
-   ========================================================= */
-
-.fraudguard {
-  position: relative;
-  overflow: hidden;
 }
 
 .fraudguard::after {
   content: "";
-
   position: fixed;
-
   left: 0;
   right: 0;
-
   top: -100px;
-
   height: 1px;
-
   background: linear-gradient(
     90deg,
     transparent,
     rgba(73, 213, 232, 0.12),
     transparent
   );
-
   pointer-events: none;
-
   animation: securityScan 8s linear infinite;
-
   z-index: 20;
 }
 
 @keyframes securityScan {
-  0% {
-    top: -100px;
-  }
 
-  100% {
-    top: 100vh;
-  }
-}
-/* =========================================================
-   FRAUDGUARD UI POLISH
-   ========================================================= */
-
-/* ---------- GLOBAL TYPOGRAPHY ---------- */
-
-body {
-  font-size: 13px;
-  letter-spacing: 0.15px;
 }
 
-.data-label,
-.form-field label,
-.section-source,
-.panel-meta,
-.brand-subtitle,
-.model-display small {
+.data-label, .form-field label, .section-source, .panel-meta, .brand-subtitle, .model-display small {
   color: #7f9aa2;
 }
 
-.data-label {
-  font-size: 8px;
-  font-weight: 500;
-  letter-spacing: 1.8px;
-}
-
-.section-number,
-.section-name {
+.section-number, .section-name {
   font-weight: 600;
 }
 
-.section-name {
-  font-size: 10px;
-  letter-spacing: 1.7px;
-}
-
-.panel-header {
-  background: rgba(73, 213, 232, 0.018);
-}
-
-.panel-header .section-number,
-.panel-header .section-name {
+.panel-header .section-number, .panel-header .section-name {
   text-shadow: 0 0 8px rgba(73, 213, 232, 0.08);
-}
-
-
-/* ---------- BRAND ---------- */
-
-.brand-name {
-  font-size: 14px;
-  letter-spacing: 3.5px;
-}
-
-.brand-subtitle {
-  font-size: 8px;
-  letter-spacing: 2.2px;
-}
-
-
-/* ---------- NAVIGATION ---------- */
-
-.navigation {
-  font-size: 10px;
-  letter-spacing: 1.3px;
-}
-
-.navigation .nav-active {
-  text-shadow: 0 0 10px rgba(73, 213, 232, 0.35);
-}
-
-
-/* ---------- SYSTEM STATUS ---------- */
-
-.system-info {
-  font-size: 9px;
-}
-
-.model-display small {
-  font-size: 8px;
-  letter-spacing: 1.5px;
-}
-
-.model-display strong {
-  font-size: 10px;
-  letter-spacing: 1px;
-}
-
-
-/* =========================================================
-   INVESTIGATION PANEL
-   ========================================================= */
-
-.investigation-panel {
-  box-shadow:
-    inset 0 1px 0 rgba(73, 213, 232, 0.025),
-    0 12px 40px rgba(0, 0, 0, 0.12);
 }
 
 .investigation-panel .section-header {
@@ -3016,320 +1553,42 @@ body {
   font-size: 8px;
 }
 
-.transaction-form {
-  min-height: 205px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.form-field label {
-  font-size: 8px;
-  font-weight: 500;
-}
-
-.form-field input,
-.form-field select {
-  font-size: 11px;
-  height: 42px;
-}
-
-.form-actions > span {
-  font-size: 8px;
-  color: #769198;
-}
-
-.analyze-button {
-  font-size: 9px;
-  letter-spacing: 1.2px;
-}
-
-
-/* =========================================================
-   SNAPSHOT
-   ========================================================= */
-
-.snapshot-content {
-  padding: 24px 20px;
-}
-
-.large-id {
-  font-size: 30px;
-  letter-spacing: -1.5px;
-  text-shadow: 0 0 15px rgba(217, 229, 232, 0.08);
-}
-
-.snapshot-row {
-  min-height: 56px;
-}
-
-.snapshot-row > span:last-child {
-  font-size: 10px;
-  font-weight: 500;
-}
-
 .snapshot-row .data-label {
   font-size: 8px;
 }
 
-
-/* =========================================================
-   VERDICT
-   ========================================================= */
-
-.verdict-content {
-  padding: 23px 20px;
-}
-
-.probability {
-  font-size: 66px;
-  letter-spacing: -5px;
-  font-weight: 400;
-}
-
-.probability span {
-  font-size: 17px;
-}
-
-.probability-scale {
-  font-size: 7px;
-}
-
-.verdict-box {
-  background:
-    linear-gradient(
-      90deg,
-      rgba(71, 214, 154, 0.025),
-      transparent 70%
-    );
-}
-
-.verdict-box strong {
-  font-size: 11px;
-  letter-spacing: 1.2px;
-}
-
-.verdict-stat {
-  min-height: 60px;
-}
-
-.verdict-stat strong {
-  font-size: 10px;
-}
-
-
-/* =========================================================
-   MODEL SIGNALS / RADAR
-   ========================================================= */
-
-.evidence-radar {
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(71, 214, 154, 0.035),
-      transparent 48%
-    );
-}
-
-.radar-ring {
-  opacity: 0.22;
-}
-
-.ring-one {
-  width: 118px;
-  height: 118px;
-}
-
-.ring-two {
-  width: 182px;
-  height: 182px;
-}
-
-.ring-three {
-  width: 246px;
-  height: 246px;
-}
-
-.radar-cross {
-  opacity: 0.15;
-}
-
-.evidence-core {
-  width: 94px;
-  height: 94px;
-
-  box-shadow:
-    0 0 25px var(--risk-glow),
-    inset 0 0 25px var(--risk-glow);
-
-  animation: corePulse 3s ease-in-out infinite;
-}
-
-.evidence-core strong {
-  font-size: 12px;
-}
-
-.evidence-core small {
-  font-size: 7px;
-}
-
-.node-label strong {
-  font-size: 8px;
-  letter-spacing: 1.2px;
-}
-
-.node-label small {
-  font-size: 7px;
-  letter-spacing: 0.8px;
-}
-
-.evidence-node .node-circle {
-  width: 9px;
-  height: 9px;
-}
-
-.evidence-node .node-circle span {
-  width: 3px;
-  height: 3px;
-}
-
-.risk-legend {
-  font-size: 7px;
-}
-
-
-/* =========================================================
-   MODEL TRACE
-   ========================================================= */
-
-.trace-panel {
-  overflow: hidden;
-}
-
-.trace {
-  min-height: 145px;
-  padding: 30px 23px;
-}
-
-.trace-number {
-  width: 32px;
-  height: 32px;
-  font-size: 8px;
-}
-
-.trace-step strong {
-  font-size: 8px;
-  letter-spacing: 0.9px;
-}
-
-.trace-step span {
-  font-size: 7px;
-  color: #6d858d;
-}
-
-.trace-connector {
-  width: 42px;
-}
-
-.trace-connector::after {
-  font-size: 15px;
-}
-
-
-/* =========================================================
-   PANEL HOVER
-   ========================================================= */
-
-.dashboard-panel {
-  transition:
-    border-color 0.25s ease,
-    background 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
 .dashboard-panel:hover {
   border-color: #1b414a;
-
-  background:
-    linear-gradient(
+  background: linear-gradient(
       135deg,
       rgba(73, 213, 232, 0.018),
       rgba(8, 22, 27, 0.86)
     );
-
-  box-shadow:
-    0 8px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
-
-
-/* =========================================================
-   SUBTLE SCAN EFFECT
-   ========================================================= */
 
 .evidence-radar::after {
   content: "";
-
   position: absolute;
-
   width: 230px;
   height: 1px;
-
   left: 50%;
   transform: translateX(-50%);
-
   background: linear-gradient(
     90deg,
     transparent,
     var(--risk-color),
     transparent
   );
-
   opacity: 0.12;
-
   animation: radarScan 4s linear infinite;
 }
 
-
-/* =========================================================
-   ANIMATIONS
-   ========================================================= */
-
-@keyframes corePulse {
-  0%,
-  100% {
-    box-shadow:
-      0 0 18px var(--risk-glow),
-      inset 0 0 18px var(--risk-glow);
-  }
-
-  50% {
-    box-shadow:
-      0 0 30px var(--risk-glow),
-      inset 0 0 28px var(--risk-glow);
-  }
-}
-
 @keyframes radarScan {
-  0% {
-    top: 18%;
-  }
 
-  50% {
-    top: 82%;
-  }
-
-  100% {
-    top: 18%;
-  }
 }
-
-
-/* =========================================================
-   BETTER MOBILE TEXT
-   ========================================================= */
 
 @media (max-width: 760px) {
-
   .brand-name {
     font-size: 12px;
   }
@@ -3347,28 +1606,16 @@ body {
   }
 }
 
-/* =========================================================
-   INVESTIGATION CONSOLE
-   ========================================================= */
-
 .investigation-main {
   padding: 22px 18px 17px;
-
   display: flex;
   flex-direction: column;
-
   gap: 18px;
 }
-
-
-/* =========================================================
-   TRANSACTION INPUT
-   ========================================================= */
 
 .investigation-input-area {
   display: flex;
   flex-direction: column;
-
   width: min(100%, 560px);
 }
 
@@ -3376,80 +1623,25 @@ body {
   margin-bottom: 8px;
 }
 
-.transaction-input {
-  height: 48px;
-
-  display: flex;
-  align-items: center;
-
-  border: 1px solid var(--line);
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(73, 213, 232, 0.025),
-      rgba(3, 11, 14, 0.85)
-    );
-
-  padding: 0 14px;
-
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
-}
-
 .transaction-input:hover {
   border-color: #24515c;
 }
 
-.transaction-input:focus-within {
-  border-color: var(--cyan);
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(73, 213, 232, 0.045),
-      rgba(3, 11, 14, 0.9)
-    );
-
-  box-shadow:
-    0 0 0 1px rgba(73, 213, 232, 0.08),
-    0 0 22px rgba(73, 213, 232, 0.06);
-}
-
-.transaction-input input {
-  font-size: 13px;
-  letter-spacing: 0.4px;
-}
-
 .transaction-helper {
   margin-top: 7px;
-
   font-size: 8px;
   letter-spacing: 0.7px;
-
   color: #6f8991;
 }
 
-
-/* =========================================================
-   STATUS STRIP
-   ========================================================= */
-
 .system-status-strip {
   width: 100%;
-
   min-height: 66px;
-
   display: flex;
   align-items: center;
-
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-
-  background:
-    linear-gradient(
+  background: linear-gradient(
       90deg,
       rgba(73, 213, 232, 0.012),
       transparent,
@@ -3459,100 +1651,68 @@ body {
 
 .status-block {
   flex: 1;
-
   min-width: 0;
-
   display: flex;
   align-items: center;
-
   gap: 11px;
-
   padding: 0 14px;
 }
 
 .status-block small {
   display: block;
-
   font-size: 7px;
   letter-spacing: 1.4px;
-
   color: #718b93;
 }
 
 .status-block strong {
   display: block;
-
   margin-top: 5px;
-
   font-size: 9px;
   font-weight: 500;
-
   letter-spacing: 0.8px;
-
   color: var(--text);
 }
 
 .status-indicator {
   width: 6px;
   height: 6px;
-
   flex-shrink: 0;
-
   border-radius: 50%;
-
   background: var(--green);
-
-  box-shadow:
-    0 0 7px rgba(71, 214, 154, 0.7);
-
+  box-shadow: 0 0 7px rgba(71, 214, 154, 0.7);
   animation: statusBlink 2.5s ease-in-out infinite;
 }
 
 .status-divider {
   width: 1px;
   height: 28px;
-
   background: var(--line);
 }
 
-
-/* =========================================================
-   ACTION ROW
-   ========================================================= */
-
 .investigation-action {
   min-height: 48px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 20px;
 }
 
 .model-ready {
   display: flex;
   align-items: center;
-
   gap: 10px;
-
   font-size: 10px;
   letter-spacing: 0.8px;
-
   color: #b9cbd0;
 }
 
 .ready-pulse {
   width: 6px;
   height: 6px;
-
   border-radius: 50%;
-
   background: var(--green);
-
-  box-shadow:
-    0 0 8px rgba(71, 214, 154, 0.8);
-
+  box-shadow: 0 0 8px rgba(71, 214, 154, 0.8);
   animation: statusBlink 2s ease-in-out infinite;
 }
 
@@ -3569,61 +1729,26 @@ body {
   font-size: 15px;
 }
 
-
-/* =========================================================
-   STATUS ANIMATION
-   ========================================================= */
-
 @keyframes statusBlink {
-  0%,
-  100% {
-    opacity: 1;
-  }
 
-  50% {
-    opacity: 0.45;
-  }
 }
-
-
-/* =========================================================
-   ERROR STATE
-   ========================================================= */
 
 .investigation-panel:has(.api-error) .status-indicator {
   background: var(--red);
-
-  box-shadow:
-    0 0 8px rgba(255, 77, 90, 0.7);
+  box-shadow: 0 0 8px rgba(255, 77, 90, 0.7);
 }
 
 .investigation-panel:has(.api-error) .ready-pulse {
   background: var(--red);
-
-  box-shadow:
-    0 0 8px rgba(255, 77, 90, 0.7);
+  box-shadow: 0 0 8px rgba(255, 77, 90, 0.7);
 }
 
-
-/* =========================================================
-   LOADING STATE
-   ========================================================= */
-
-.investigation-panel:has(.analyze-button:disabled)
-  .ready-pulse {
+.investigation-panel:has(.analyze-button:disabled) .ready-pulse {
   background: var(--cyan);
-
-  box-shadow:
-    0 0 8px rgba(73, 213, 232, 0.8);
+  box-shadow: 0 0 8px rgba(73, 213, 232, 0.8);
 }
-
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
 
 @media (max-width: 760px) {
-
   .investigation-main {
     padding: 18px 14px;
   }
@@ -3631,7 +1756,6 @@ body {
   .system-status-strip {
     flex-direction: column;
     align-items: stretch;
-
     padding: 8px 0;
   }
 
@@ -3642,7 +1766,6 @@ body {
   .status-divider {
     width: calc(100% - 28px);
     height: 1px;
-
     margin: 0 14px;
   }
 
@@ -3654,4 +1777,29 @@ body {
   .investigation-action .analyze-button {
     width: 100%;
   }
+}
+
+/* =========================================================
+   FIX — INVESTIGATION PANEL SCAN
+   ========================================================= */
+
+.investigation-panel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(73, 213, 232, 0.45), transparent);
+  opacity: 0.15;
+  pointer-events: none;
+  animation: panelScan 5s linear infinite;
+}
+
+/* =========================================================
+   FIX — ANALYZE BUTTON TEXT
+   ========================================================= */
+
+.analyze-button .button-label {
+  font-size: 9px;
 }

@@ -3,11 +3,9 @@ export type RiskLevel =
   | "MEDIUM"
   | "HIGH";
 
-
 export type TransactionRequest = {
   TransactionID: number;
 };
-
 
 export type PredictionResult = {
   transaction_id: number;
@@ -21,12 +19,12 @@ export type PredictionResult = {
   model: string;
 
   features: number;
-};
 
+  classification_threshold?: number;
+};
 
 const API_URL =
   "http://127.0.0.1:8000";
-
 
 export async function predictTransaction(
   transaction: TransactionRequest
@@ -48,7 +46,6 @@ export async function predictTransaction(
     }
   );
 
-
   let data: unknown;
 
   try {
@@ -63,7 +60,6 @@ export async function predictTransaction(
 
   }
 
-
   if (!response.ok) {
 
     const errorData =
@@ -77,7 +73,6 @@ export async function predictTransaction(
     );
 
   }
-
 
   return data as PredictionResult;
 }

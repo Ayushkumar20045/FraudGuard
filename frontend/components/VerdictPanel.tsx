@@ -28,6 +28,11 @@ export default function VerdictPanel({
       : "LEGITIMATE"
     : "—";
 
+  const threshold =
+    result?.classification_threshold !== undefined
+      ? result.classification_threshold
+      : null;
+
   return (
     <section className="dashboard-panel verdict-panel">
 
@@ -67,7 +72,6 @@ export default function VerdictPanel({
 
         </div>
 
-
         {/* ==========================================
             MODEL VERDICT
         ========================================== */}
@@ -96,7 +100,6 @@ export default function VerdictPanel({
 
         </div>
 
-
         {/* ==========================================
             MODEL STATISTICS
         ========================================== */}
@@ -117,7 +120,11 @@ export default function VerdictPanel({
 
           <VerdictStat
             label="THRESHOLD"
-            value="0.50"
+            value={
+              threshold !== null
+                ? threshold.toFixed(2)
+                : "—"
+            }
           />
 
           <VerdictStat
@@ -136,7 +143,6 @@ export default function VerdictPanel({
     </section>
   );
 }
-
 
 /* =========================================================
    PROBABILITY BAR

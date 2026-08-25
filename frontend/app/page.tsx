@@ -19,9 +19,6 @@ export default function Home() {
   const [loading, setLoading] =
     useState(false);
 
-  const [error, setError] =
-    useState("");
-
   return (
     <main
       className={`fraudguard ${
@@ -30,7 +27,6 @@ export default function Home() {
           : "neutral"
       }`}
     >
-
       <Header />
 
       <div className="workspace">
@@ -42,22 +38,9 @@ export default function Home() {
         <TransactionForm
           onResult={(prediction) => {
             setResult(prediction);
-            setError("");
           }}
           onLoading={setLoading}
-          onError={setError}
         />
-
-        {/* ==========================================
-            API ERROR
-        ========================================== */}
-
-        {error && (
-          <div className="api-error">
-            <span>!</span>
-            {error}
-          </div>
-        )}
 
         {/* ==========================================
             LIVE ANALYSIS

@@ -36,7 +36,7 @@ export default function RiskEvidence({
       name: "MODEL",
       position: "left",
       value: result
-        ? "XGBOOST"
+        ? result.model
         : "UNASSESSED",
     },
   ];

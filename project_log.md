@@ -81,3 +81,23 @@
 - Verified API responses with LOW and HIGH risk transactions.
 - Started the Next.js frontend with a custom transaction-investigation focused UI.
 - Established the initial FraudGuard visual direction, intentionally avoiding a generic AI dashboard or TypeMetric-style design.
+
+Exactly yarr — you want **Day 10 in the same project-log style**: technical, concise, and focused on what was actually done, not a generic “UI improved” summary.
+
+Add this after Day 9:
+
+## Day 10 — FraudGuard Investigation Dashboard & UI Completion
+
+- Completed the main FraudGuard investigation dashboard around the working FastAPI inference pipeline.
+- Built the transaction investigation interface with transaction ID input, analysis controls, loading states, and API error handling.
+- Connected the frontend prediction flow with the custom transaction inference endpoint and mapped backend responses into the dashboard.
+- Added a dynamic **Risk Verdict** panel displaying fraud probability, probability scale, model verdict, prediction, risk level, threshold, and confidence.
+- Added a **Risk Evidence** visualization representing Identity, Card, Behavior, and Address signal groups with risk-aware styling.
+- Added a **Model Trace** panel visualizing the inference pipeline from raw input and preprocessing through the 891-dimensional feature vector, XGBoost inference, risk score, and final verdict.
+- Added dynamic LOW, MEDIUM, and HIGH risk themes so the dashboard visual state changes according to the model output.
+- Refined the FraudGuard visual system with a dark cybersecurity-oriented interface, grid background, technical typography, panel-based layout, borders, glow effects, and responsive behavior.
+- Preserved the **Day 7 XGBoost champion** as the production inference model with the verified 891-feature preprocessing pipeline.
+- Successfully validated the frontend production build with TypeScript compilation, static page generation, and Next.js optimization completing without errors.
+- Resolved Git conflicts while rebasing the Day 10 UI commit onto the latest remote `main` branch and successfully restored a clean working tree.
+- Committed the completed work as **`Complete Day 10 FraudGuard UI`**.
+- **Day 10 completed: FraudGuard now has a functional end-to-end ML inference backend with an integrated investigation-focused frontend dashboard.**

@@ -1,144 +1,199 @@
 "use client";
 
-import { useState } from "react";
+import { FormEvent, useState } from "react";
+import { predictTransaction } from "../lib/api";
 
-import {
-  predictTransaction,
-  type TransactionRequest,
-  type PredictionResult,
-} from "../lib/api";
+interface TransactionFormProps {
+  onResult: (result: any) => void;
+  onLoading?: (loading: boolean) => void;
+}
 
-type TransactionFormProps = {
-  onResult: (result: PredictionResult) => void;
-  onLoading: (loading: boolean) => void;
-  onError: (error: string) => void;
-};
+const MIN_TRANSACTION_ID = 2987000;
+const MAX_TRANSACTION_ID = 3577539;
+
+const SAMPLE_TRANSACTION_IDS = [
+  2987000,
+  2988250,
+  3000000,
+  3200000,
+  3400000,
+  3577539,
+];
 
 export default function TransactionForm({
   onResult,
   onLoading,
-  onError,
 }: TransactionFormProps) {
-  const [transactionId, setTransactionId] =
-    useState("");
+  const [transactionId, setTransactionId] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  async function handleSubmit(
-    event: React.FormEvent<HTMLFormElement>
-  ) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    onLoading(true);
-    onError("");
+    setError("");
+
+    const parsedTransactionId = Number(transactionId);
+
+    if (
+      !Number.isInteger(parsedTransactionId) ||
+      parsedTransactionId < MIN_TRANSACTION_ID ||
+      parsedTransactionId > MAX_TRANSACTION_ID
+    ) {
+      setError(
+        `Transaction ID must be between ${MIN_TRANSACTION_ID} and ${MAX_TRANSACTION_ID}.`
+      );
+      return;
+    }
 
     try {
-      const parsedTransactionId =
-        Number(transactionId);
+      setLoading(true);
+      onLoading?.(true);
 
-      if (
-        !Number.isInteger(parsedTransactionId) ||
-        parsedTransactionId <= 0
-      ) {
-        throw new Error(
-          "Please enter a valid TransactionID."
-        );
-      }
-
-      const payload: TransactionRequest = {
+      const result = await predictTransaction({
         TransactionID: parsedTransactionId,
-      };
-
-      const result =
-        await predictTransaction(payload);
+      });
 
       onResult(result);
-    } catch (error) {
-      onError(
-        error instanceof Error
-          ? error.message
-          : "Unable to connect to FraudGuard API."
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Unable to analyze transaction."
       );
     } finally {
-      onLoading(false);
+      setLoading(false);
+      onLoading?.(false);
     }
   }
 
   return (
-    <section className="dashboard-panel investigation-panel">
-      <div className="panel-header">
+    <section className="investigation-panel">
+      <div className="section-header">
         <div>
-          <span className="section-number">
-            01
-          </span>
-
+          <span className="section-number">01</span>
           <span className="section-name">
             TRANSACTION INVESTIGATION
           </span>
         </div>
 
-        <span className="panel-meta">
-          LIVE TRANSACTION ANALYSIS
+        <span className="section-source">
+          IEEE-CIS FRAUD DETECTION
         </span>
       </div>
 
       <form
-        className="transaction-form"
+        className="investigation-main"
         onSubmit={handleSubmit}
       >
-        <div className="form-grid">
-          <div className="form-field">
-            <label>
-              TRANSACTION ID
-            </label>
+        <div className="investigation-input-area">
+          <span className="data-label">
+            TRANSACTION ID
+          </span>
 
-            <div className="input-wrapper">
-              <span className="input-prefix">
-                TX
-              </span>
+          <div className="transaction-input">
+            <span className="tx-label">TX</span>
 
-              <input
-                type="number"
-                min="1"
-                value={transactionId}
-                onChange={(event) =>
-                  setTransactionId(
-                    event.target.value
-                  )
-                }
-                placeholder="2987000"
-                required
-              />
-            </div>
+            <span className="input-divider" />
 
-            <span className="field-hint">
-              IEEE-CIS transaction identifier
+            <input
+              type="number"
+              min={MIN_TRANSACTION_ID}
+              max={MAX_TRANSACTION_ID}
+              step="1"
+              value={transactionId}
+              onChange={(event) =>
+                setTransactionId(event.target.value)
+              }
+              placeholder="2987000"
+              list="transaction-id-suggestions"
+              required
+            />
+
+            <span className="input-type">
+              INTEGER
             </span>
+          </div>
+
+          <datalist id="transaction-id-suggestions">
+            {SAMPLE_TRANSACTION_IDS.map((id) => (
+              <option key={id} value={id} />
+            ))}
+          </datalist>
+
+          <span className="transaction-helper">
+            Valid IEEE-CIS IDs: {MIN_TRANSACTION_ID} —{" "}
+            {MAX_TRANSACTION_ID}
+          </span>
+        </div>
+
+        {error && (
+          <div className="api-error">
+            <span>!</span>
+            {error}
+          </div>
+        )}
+
+        <div className="system-status-strip">
+          <div className="status-block">
+            <span className="status-indicator" />
+
+            <div>
+              <small>INFERENCE ENGINE</small>
+              <strong>
+                XGBOOST DAY 7 CHAMPION
+              </strong>
+            </div>
+          </div>
+
+          <div className="status-divider" />
+
+          <div className="status-block">
+            <span className="status-indicator" />
+
+            <div>
+              <small>FEATURE SPACE</small>
+              <strong>891 FEATURES</strong>
+            </div>
+          </div>
+
+          <div className="status-divider" />
+
+          <div className="status-block">
+            <span className="status-indicator" />
+
+            <div>
+              <small>CLASSIFICATION</small>
+              <strong>
+                LEGITIMATE / FRAUD
+              </strong>
+            </div>
           </div>
         </div>
 
-        <div className="form-actions">
-          <div className="form-status">
-            <span className="status-dot" />
+        <div className="investigation-action">
+          <div className="model-ready">
+            <span className="ready-pulse" />
 
             <span>
-              MODEL READY
-            </span>
-
-            <span className="status-divider">
-              /
-            </span>
-
-            <span>
-              XGBOOST DAY 7 CHAMPION
+              {loading
+                ? "ANALYZING TRANSACTION..."
+                : "MODEL READY FOR INFERENCE"}
             </span>
           </div>
 
           <button
             type="submit"
             className="analyze-button"
+            disabled={loading}
           >
-            INVESTIGATE TRANSACTION
+            <span className="button-label">
+              {loading
+                ? "ANALYZING..."
+                : "INVESTIGATE TRANSACTION"}
+            </span>
 
-            <span>
+            <span className="button-arrow">
               →
             </span>
           </button>

@@ -34,7 +34,11 @@ export default function ModelTrace({
         <TraceStep
           number="01"
           title="RAW INPUT"
-          value={hasResult ? "RECEIVED" : "WAITING"}
+          value={
+            hasResult
+              ? "RECEIVED"
+              : "WAITING"
+          }
         />
 
         <TraceConnector />
@@ -42,7 +46,11 @@ export default function ModelTrace({
         <TraceStep
           number="02"
           title="PREPROCESSING"
-          value={hasResult ? "COMPLETE" : "PENDING"}
+          value={
+            hasResult
+              ? "COMPLETE"
+              : "PENDING"
+          }
         />
 
         <TraceConnector />
@@ -50,15 +58,23 @@ export default function ModelTrace({
         <TraceStep
           number="03"
           title="FEATURE VECTOR"
-          value={result ? `${result.features} DIMENSIONS` : "—"}
+          value={
+            result
+              ? `${result.features} DIMENSIONS`
+              : "—"
+          }
         />
 
         <TraceConnector />
 
         <TraceStep
           number="04"
-          title="XGBOOST"
-          value={result ? "DAY 7 CHAMPION" : "READY"}
+          title="MODEL"
+          value={
+            result
+              ? result.model
+              : "READY"
+          }
         />
 
         <TraceConnector />
