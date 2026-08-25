@@ -1,8 +1,3 @@
-Absolutely. The main issue is that your pasted version has **escaped Markdown everywhere** (`\*`, `\|`, `\`` etc.), which will look broken in an actual `README.md`.
-
-Here is the **clean, GitHub-ready version** of that opening section. Paste this directly into `README.md`:
-
-````md
 # FraudGuard
 
 ### Transaction-Level Fraud Detection & Investigation System
